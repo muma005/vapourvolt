@@ -6,8 +6,6 @@ import { useState } from "react";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { Card, PrimaryButton, SecondaryButton } from "@/components/ui/primitives";
-import { hasSupabaseEnv } from "@/lib/auth/env";
-import { createSupabaseBrowserClient } from "@/lib/auth/supabase-browser";
 
 type AuthShellProps = {
   mode: "login" | "signup";
@@ -63,55 +61,21 @@ export function AuthShell({
     setIsSubmitting(true);
 
     try {
-      if (!hasSupabaseEnv()) {
-        throw new Error("Supabase is not configured yet. Add the project keys to enable product access.");
+      const response = await fetch(mode === "signup" ? "/api/auth/signup" : "/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      const payload = (await response.json()) as { error?: string };
+
+      if (!response.ok) {
+        throw new Error(payload.error ?? "Unable to complete authentication.");
       }
 
-      const supabase = createSupabaseBrowserClient();
-      const email = (values.email ?? "").trim();
-      const password = values.password ?? "";
-
-      if (mode === "signup") {
-        const signUpResult = await supabase.auth.signUp({
-          email,
-          password,
-          options: {
-            data: {
-              full_name: values.name ?? "",
-              company: values.company ?? "",
-            },
-          },
-        });
-
-        if (signUpResult.error) {
-          throw signUpResult.error;
-        }
-
-        if (!signUpResult.data.session) {
-          const signInResult = await supabase.auth.signInWithPassword({
-            email,
-            password,
-          });
-
-          if (signInResult.error) {
-            throw signInResult.error;
-          }
-        }
-
-        setSuccess("Workspace created. Redirecting to the product...");
-      } else {
-        const signInResult = await supabase.auth.signInWithPassword({
-          email,
-          password,
-        });
-
-        if (signInResult.error) {
-          throw signInResult.error;
-        }
-
-        setSuccess("Signed in. Redirecting to the product...");
-      }
-
+      setSuccess(mode === "signup" ? "Workspace created. Redirecting to the product..." : "Signed in. Redirecting to the product...");
       router.push("/app");
       router.refresh();
     } catch (caughtError) {
@@ -183,7 +147,7 @@ export function AuthShell({
               ) : null}
 
               <div className="flex items-center justify-between rounded-2xl border border-[rgba(22,28,40,0.08)] bg-[rgba(240,237,229,0.72)] px-4 py-3">
-                <p className="text-sm text-ink">Email/password authentication with protected product routes.</p>
+                <p className="text-sm text-ink">Local email/password authentication with protected product routes.</p>
                 <Link href="/contact" className="text-sm font-medium text-[var(--color-primary)]">
                   Need help?
                 </Link>

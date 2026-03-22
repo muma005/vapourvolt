@@ -1,6 +1,14 @@
 import { AuthShell } from "@/components/auth/auth-shell";
+import { getCurrentUser } from "@/lib/auth/current-user";
+import { redirect } from "next/navigation";
 
-export default function SignupPage() {
+export default async function SignupPage() {
+  const user = await getCurrentUser();
+
+  if (user) {
+    redirect("/app");
+  }
+
   return (
     <AuthShell
       mode="signup"

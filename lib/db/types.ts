@@ -1,5 +1,13 @@
 import type { AssessmentResult, CaseInput } from "@/lib/engine";
 
+export type LocalUser = {
+  id: string;
+  name: string;
+  company: string;
+  email: string;
+  createdAt: string;
+};
+
 export type CaseStatus =
   | "Needs Evidence"
   | "Ready for Review"

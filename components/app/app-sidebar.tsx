@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { createSupabaseBrowserClient } from "@/lib/auth/supabase-browser";
 import { PrimaryButton } from "@/components/ui/primitives";
 import { cn } from "@/lib/utils";
 
@@ -20,8 +19,9 @@ export function AppSidebar({
   const pathname = usePathname();
 
   async function handleSignOut() {
-    const supabase = createSupabaseBrowserClient();
-    await supabase.auth.signOut();
+    await fetch("/api/auth/logout", {
+      method: "POST",
+    });
     router.push("/");
     router.refresh();
   }

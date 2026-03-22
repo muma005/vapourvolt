@@ -2,16 +2,11 @@ import Link from "next/link";
 import { CasesTable } from "@/components/app/cases-table";
 import { Card, PrimaryButton, MetricCard } from "@/components/ui/primitives";
 import { listUserCases } from "@/lib/db/cases";
-import { hasSupabaseEnv } from "@/lib/auth/env";
 import { requireUser } from "@/lib/auth/require-user";
 
 export default async function AppDashboardPage() {
-  if (!hasSupabaseEnv()) {
-    return null;
-  }
-
   const user = await requireUser();
-  const cases = await listUserCases(user!.id);
+  const cases = await listUserCases(user.id);
   const highReadiness = cases.filter((caseItem) => caseItem.assessment.readinessLevel === "High").length;
   const actionRequired = cases.filter((caseItem) => caseItem.status !== "Ready for Submission Review").length;
 

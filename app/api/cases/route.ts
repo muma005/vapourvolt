@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { hasSupabaseEnv } from "@/lib/auth/env";
-import { createSupabaseServerClient } from "@/lib/auth/supabase-server";
+import { getSessionPayload } from "@/lib/auth/session";
 import { createCaseWithAssessment } from "@/lib/db/cases";
+import { findUserById } from "@/lib/db/users";
 import type { AssetType, CaseInput, EvidenceSignals } from "@/lib/engine";
 
 function isObject(value: unknown): value is Record<string, unknown> {
@@ -60,14 +60,13 @@ function parseCaseInput(value: unknown): CaseInput | null {
 }
 
 export async function POST(request: Request) {
-  if (!hasSupabaseEnv()) {
-    return NextResponse.json({ error: "Supabase is not configured." }, { status: 503 });
+  const session = await getSessionPayload();
+
+  if (!session) {
+    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
   }
 
-  const supabase = await createSupabaseServerClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = findUserById(session.userId);
 
   if (!user) {
     return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
