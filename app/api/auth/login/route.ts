@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { mapAuthErrorToMessage } from "@/lib/auth/auth-errors";
 import { verifyPassword } from "@/lib/auth/password";
 import { applySessionCookie, createSessionToken } from "@/lib/auth/session";
 import { findUserRowByEmail } from "@/lib/db/users";
@@ -38,11 +39,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json(
       {
-        error: process.env.NODE_ENV === "development"
-          ? caughtError instanceof Error
-            ? caughtError.message
-            : "Unable to sign in."
-          : "Unable to sign in.",
+        error: mapAuthErrorToMessage(caughtError, "Unable to sign in right now. Please try again."),
       },
       { status: 500 },
     );

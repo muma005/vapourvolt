@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { mapAuthErrorToMessage } from "@/lib/auth/auth-errors";
 import { hashPassword } from "@/lib/auth/password";
 import { applySessionCookie, createSessionToken } from "@/lib/auth/session";
 import { createUser, findUserRowByEmail } from "@/lib/db/users";
@@ -55,7 +56,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json(
       {
-        error: process.env.NODE_ENV === "development" ? message : "Unable to create account.",
+        error: mapAuthErrorToMessage(caughtError, "Unable to create account right now. Please try again."),
       },
       { status: 500 },
     );

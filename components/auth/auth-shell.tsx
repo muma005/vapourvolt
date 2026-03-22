@@ -147,7 +147,9 @@ export function AuthShell({
               ) : null}
 
               <div className="flex items-center justify-between rounded-2xl border border-[rgba(22,28,40,0.08)] bg-[rgba(240,237,229,0.72)] px-4 py-3">
-                <p className="text-sm text-ink">Local email/password authentication with protected product routes.</p>
+                <p className="text-sm text-ink">
+                  Local email/password authentication with protected product routes and local case storage.
+                </p>
                 <Link href="/contact" className="text-sm font-medium text-[var(--color-primary)]">
                   Need help?
                 </Link>
