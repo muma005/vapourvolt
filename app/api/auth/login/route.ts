@@ -33,7 +33,18 @@ export async function POST(request: Request) {
 
     applySessionCookie(response, createSessionToken({ userId: userRow.id, email: userRow.email }));
     return response;
-  } catch {
-    return NextResponse.json({ error: "Unable to sign in." }, { status: 500 });
+  } catch (caughtError) {
+    console.error("Login failed:", caughtError);
+
+    return NextResponse.json(
+      {
+        error: process.env.NODE_ENV === "development"
+          ? caughtError instanceof Error
+            ? caughtError.message
+            : "Unable to sign in."
+          : "Unable to sign in.",
+      },
+      { status: 500 },
+    );
   }
 }

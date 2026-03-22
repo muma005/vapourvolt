@@ -44,7 +44,20 @@ export async function POST(request: Request) {
 
     applySessionCookie(response, createSessionToken({ userId: user.id, email: user.email }));
     return response;
-  } catch {
-    return NextResponse.json({ error: "Unable to create account." }, { status: 500 });
+  } catch (caughtError) {
+    const message = caughtError instanceof Error ? caughtError.message : "Unable to create account.";
+
+    if (message.toLowerCase().includes("unique") || message.toLowerCase().includes("users.email")) {
+      return NextResponse.json({ error: "An account with this email already exists." }, { status: 409 });
+    }
+
+    console.error("Signup failed:", caughtError);
+
+    return NextResponse.json(
+      {
+        error: process.env.NODE_ENV === "development" ? message : "Unable to create account.",
+      },
+      { status: 500 },
+    );
   }
 }
