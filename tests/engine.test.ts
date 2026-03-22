@@ -7,7 +7,7 @@ import type { CaseInput } from "../lib/engine/types.ts";
 test("evaluateCase handles a strong domain case", () => {
   const input: CaseInput = {
     assetType: "Domain",
-    assetName: "vaporvaultlabs.com",
+    assetName: "vapourltagentlabs.com",
     organization: "Vapor Labs Ltd",
     reasonForRecovery: "Legacy domain tied to inactive business unit",
     evidenceSignals: {
@@ -32,8 +32,8 @@ test("evaluateCase handles a strong domain case", () => {
 test("evaluateCase handles a partial social handle case", () => {
   const input: CaseInput = {
     assetType: "Social Handle",
-    assetName: "@vaporvaulthq",
-    organization: "VaporVault Holdings",
+    assetName: "@vapourltagenthq",
+    organization: "VapourltAgent Holdings",
     reasonForRecovery: "Brand handle recovery with incomplete historical records",
     evidenceSignals: {
       trademarkRecord: true,

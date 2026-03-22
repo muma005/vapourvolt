@@ -19,7 +19,7 @@ export function Footer() {
     <footer className="border-t border-[rgba(22,28,40,0.08)] bg-[rgba(255,253,248,0.72)]">
       <div className="site-shell grid gap-10 py-12 lg:grid-cols-[1.4fr_1fr_1fr]">
         <div>
-          <p className="text-lg font-semibold text-ink">VaporVault</p>
+          <p className="text-lg font-semibold text-ink">VapourltAgent</p>
           <p className="mt-3 max-w-sm text-sm leading-7 text-muted">
             A system of record for digital asset recovery operations.
           </p>
@@ -39,12 +39,12 @@ export function Footer() {
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-muted">Contact</p>
           <a
-            href="mailto:hello@vaporvault.co"
+            href="mailto:hello@vapourltagent.co"
             className="mt-4 inline-block text-sm text-ink transition hover:text-[var(--color-primary)]"
           >
-            hello@vaporvault.co
+            hello@vapourltagent.co
           </a>
-          <p className="mt-8 text-xs text-muted">(c) 2026 VaporVault. All rights reserved.</p>
+          <p className="mt-8 text-xs text-muted">(c) 2026 VapourltAgent. All rights reserved.</p>
         </div>
       </div>
     </footer>

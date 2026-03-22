@@ -159,7 +159,7 @@ export function DemoExperience() {
       <div className="site-shell pt-6">
         <div className="mb-6 flex flex-wrap items-center justify-between gap-4 rounded-[1.75rem] border border-[rgba(22,28,40,0.08)] bg-[rgba(255,253,248,0.76)] px-5 py-4 backdrop-blur-xl">
           <div>
-            <p className="text-sm font-semibold text-ink">VaporVault demo</p>
+            <p className="text-sm font-semibold text-ink">VapourltAgent demo</p>
             <p className="mt-1 text-sm text-muted">Public preview of the Recovery Readiness Engine</p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
@@ -176,7 +176,7 @@ export function DemoExperience() {
               <div>
                 <span className="eyebrow">Recovery readiness product preview</span>
                 <h1 className="mt-5 text-4xl font-semibold tracking-[-0.05em] text-ink sm:text-5xl">
-                  Preview how VaporVault scores case readiness.
+                  Preview how VapourltAgent scores case readiness.
                 </h1>
                 <p className="mt-5 max-w-2xl text-base leading-7 text-muted sm:text-lg">
                   Load a sample case or enter your own details to see how the platform classifies the case, scores
@@ -250,7 +250,7 @@ export function DemoExperience() {
                       className="field mt-2"
                       value={formState.assetName}
                       onChange={(event) => updateField("assetName", event.target.value)}
-                      placeholder="vaporvaultlabs.com"
+                      placeholder="vapourltagentlabs.com"
                       required
                     />
                   </label>
@@ -554,7 +554,7 @@ function DashboardView({
     <div className="grid gap-6 lg:grid-cols-[240px_1fr]">
       <aside className="hidden rounded-[1.75rem] border border-[rgba(22,28,40,0.08)] bg-[rgba(255,253,248,0.9)] p-5 lg:block">
         <div className="rounded-2xl bg-[var(--color-primary)] px-4 py-4 text-white">
-          <p className="text-xs uppercase tracking-[0.16em] text-white/70">VaporVault</p>
+          <p className="text-xs uppercase tracking-[0.16em] text-white/70">VapourltAgent</p>
           <p className="mt-2 text-lg font-semibold">Recovery workspace</p>
         </div>
         <nav className="mt-6 space-y-2">

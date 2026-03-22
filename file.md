@@ -1,10 +1,10 @@
-Below is a direct build spec for **VaporVault v1**.
+Below is a direct build spec for **VapourltAgent v1**.
 
 This is optimized for one serious build session. It is not a strategy document anymore. It is the thing to build.
 
 ---
 
-# VaporVault v1 Build Spec
+# VapourltAgent v1 Build Spec
 
 ## Product definition
 
@@ -14,7 +14,7 @@ A professional product website with an interactive demo for a lawful digital ass
 
 ### Product goal
 
-Make VaporVault feel like a real B2B startup product by combining:
+Make VapourltAgent feel like a real B2B startup product by combining:
 
 * a premium landing page
 * a believable interactive demo
@@ -22,7 +22,7 @@ Make VaporVault feel like a real B2B startup product by combining:
 
 ### Core story the product must communicate
 
-VaporVault helps teams assess, document, and manage lawful digital asset recovery cases in a structured way.
+VapourltAgent helps teams assess, document, and manage lawful digital asset recovery cases in a structured way.
 
 ### Core action
 
@@ -70,11 +70,11 @@ Build sections in this exact order.
 
 ### Purpose
 
-Instantly frame VaporVault as a serious software company.
+Instantly frame VapourltAgent as a serious software company.
 
 ### Layout
 
-* left: logo mark + wordmark “VaporVault”
+* left: logo mark + wordmark “VapourltAgent”
 * center/right: nav links
 * far right: CTA button
 
@@ -98,7 +98,7 @@ Instantly frame VaporVault as a serious software company.
 
 ### Copy
 
-**Logo text:** VaporVault
+**Logo text:** VapourltAgent
 
 **Nav labels:**
 
@@ -134,7 +134,7 @@ Lawful digital asset recovery workflow
 Bring structure, evidence, and visibility to digital asset recovery.
 
 **Subheadline**
-VaporVault helps teams assess cases, collect supporting evidence, and manage lawful recovery workflows for domains, accounts, and digital properties.
+VapourltAgent helps teams assess cases, collect supporting evidence, and manage lawful recovery workflows for domains, accounts, and digital properties.
 
 **Primary CTA**
 Try Demo
@@ -235,7 +235,7 @@ Without a clear case system, recovery efforts stall between review, follow-up, a
 
 ### Purpose
 
-Show what VaporVault fixes.
+Show what VapourltAgent fixes.
 
 ### Layout
 
@@ -247,7 +247,7 @@ Section intro + 4 solution cards
 The solution
 
 **Heading**
-VaporVault turns recovery cases into a clear operational workflow.
+VapourltAgent turns recovery cases into a clear operational workflow.
 
 **Support text**
 Instead of managing recovery through disconnected documents and manual follow-up, teams can run each case through a structured, reviewable process.
@@ -408,7 +408,7 @@ Trust and compliance
 Designed for lawful, documented recovery workflows.
 
 **Support text**
-VaporVault is framed around structured review, evidence handling, and clearly bounded recovery processes.
+VapourltAgent is framed around structured review, evidence handling, and clearly bounded recovery processes.
 
 ### Trust points
 
@@ -463,18 +463,18 @@ Accordion list
 #### FAQ 1
 
 **Question**
-What kinds of assets can VaporVault support?
+What kinds of assets can VapourltAgent support?
 
 **Answer**
-VaporVault is designed for structured recovery workflows around digital assets such as domains, branded handles, legacy SaaS accounts, and other digital properties where lawful recovery requires documentation and process control.
+VapourltAgent is designed for structured recovery workflows around digital assets such as domains, branded handles, legacy SaaS accounts, and other digital properties where lawful recovery requires documentation and process control.
 
 #### FAQ 2
 
 **Question**
-Does VaporVault perform recovery automatically?
+Does VapourltAgent perform recovery automatically?
 
 **Answer**
-No. VaporVault helps teams organize cases, assess readiness, and manage the workflow required for lawful recovery. It is a workflow and documentation product, not an automated takeover tool.
+No. VapourltAgent helps teams organize cases, assess readiness, and manage the workflow required for lawful recovery. It is a workflow and documentation product, not an automated takeover tool.
 
 #### FAQ 3
 
@@ -487,7 +487,7 @@ The product is best suited for operations, legal, brand protection, portfolio ma
 #### FAQ 4
 
 **Question**
-How does VaporVault handle compliance?
+How does VapourltAgent handle compliance?
 
 **Answer**
 The product is framed around documented workflows, bounded recommendations, visible risk checks, and human review where required.
@@ -546,7 +546,7 @@ Finish like a real company.
 ### Copy
 
 **Brand line**
-VaporVault
+VapourltAgent
 Structured workflows for lawful digital asset recovery.
 
 **Links**
@@ -559,10 +559,10 @@ Structured workflows for lawful digital asset recovery.
 * Terms
 
 **Contact**
-[hello@vaporvault.co](mailto:hello@vaporvault.co)
+[hello@vapourltagent.co](mailto:hello@vapourltagent.co)
 
 **Bottom line**
-© 2026 VaporVault. All rights reserved.
+© 2026 VapourltAgent. All rights reserved.
 
 ### UI components
 
@@ -597,7 +597,7 @@ Top bar + main intro panel + sample case cards
 Interactive recovery workflow demo
 
 **Body**
-Load a sample case or enter your own details to see how VaporVault structures a lawful recovery workflow.
+Load a sample case or enter your own details to see how VapourltAgent structures a lawful recovery workflow.
 
 **Buttons**
 
@@ -799,7 +799,7 @@ Case summary
 
 Example copy:
 
-* Asset: vaporvaultlabs.com
+* Asset: vapourltagentlabs.com
 * Claimed owner: Vapor Labs Ltd
 * Reason: Legacy domain tied to inactive business unit
 * Recommended pathway: Registrar-assisted ownership recovery
@@ -923,8 +923,8 @@ List 4 sample cases with status chips.
 
 Example rows:
 
-* vaporvaultlabs.com — Awaiting Docs
-* @vaporvaulthq — Needs Review
+* vapourltagentlabs.com — Awaiting Docs
+* @vapourltagenthq — Needs Review
 * Workspace-19 — Ready for Review
 * oldbrand.io — In Progress
 
@@ -984,7 +984,7 @@ Lawful digital asset recovery workflow
 Bring structure, evidence, and visibility to digital asset recovery.
 
 **Subheadline**
-VaporVault helps teams assess cases, collect supporting evidence, and manage lawful recovery workflows for domains, accounts, and digital properties.
+VapourltAgent helps teams assess cases, collect supporting evidence, and manage lawful recovery workflows for domains, accounts, and digital properties.
 
 **Primary CTA**
 Try Demo
@@ -1016,7 +1016,7 @@ Teams often handle recovery cases across inboxes, screenshots, legal notes, supp
 The solution
 
 **Heading**
-VaporVault turns recovery cases into a clear operational workflow.
+VapourltAgent turns recovery cases into a clear operational workflow.
 
 **Paragraph**
 Instead of managing recovery through disconnected documents and manual follow-up, teams can run each case through a structured, reviewable process.
@@ -1058,7 +1058,7 @@ Trust and compliance
 Designed for lawful, documented recovery workflows.
 
 **Paragraph**
-VaporVault is framed around structured review, evidence handling, and clearly bounded recovery processes.
+VapourltAgent is framed around structured review, evidence handling, and clearly bounded recovery processes.
 
 ---
 
@@ -1082,7 +1082,7 @@ Request Access
 Interactive recovery workflow demo
 
 **Paragraph**
-Load a sample case or enter your own details to see how VaporVault structures a lawful recovery workflow.
+Load a sample case or enter your own details to see how VapourltAgent structures a lawful recovery workflow.
 
 ---
 

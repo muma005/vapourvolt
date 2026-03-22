@@ -1,6 +1,6 @@
 You are a senior product designer, frontend engineer, and vertical SaaS product strategist.
 
-Your task is to redesign the VaporVault marketing website inside this repository.
+Your task is to redesign the VapourltAgent marketing website inside this repository.
 
 Read the existing codebase first.
 Understand the current site, copy, layout, and styling.
@@ -19,9 +19,9 @@ Important constraints:
 GOAL
 ==================================================
 
-Reposition and redesign VaporVault so the website clearly feels like a vertical SaaS platform.
+Reposition and redesign VapourltAgent so the website clearly feels like a vertical SaaS platform.
 
-The website should communicate that VaporVault is:
+The website should communicate that VapourltAgent is:
 - a category-specific software product
 - a case management and recovery readiness platform
 - a system users log into
@@ -40,10 +40,10 @@ POSITIONING
 
 Use this as the core positioning direction:
 
-VaporVault is the case management and recovery readiness platform for digital asset operations.
+VapourltAgent is the case management and recovery readiness platform for digital asset operations.
 
 Supporting line:
-VaporVault centralizes case intake, evidence tracking, readiness scoring, and case progression in one structured system.
+VapourltAgent centralizes case intake, evidence tracking, readiness scoring, and case progression in one structured system.
 
 The messaging should emphasize:
 - platform
@@ -99,7 +99,7 @@ Headline:
 The case management and recovery readiness platform for digital asset operations.
 
 Subheadline:
-VaporVault centralizes case intake, evidence tracking, readiness scoring, and case progression in one structured system.
+VapourltAgent centralizes case intake, evidence tracking, readiness scoring, and case progression in one structured system.
 
 Primary CTA:
 Get Started
@@ -136,7 +136,7 @@ Explain that the workflow is often fragmented across inboxes, screenshots, suppo
 PRODUCT CAPABILITIES
 ==================================================
 
-Show VaporVault as a platform with 4 productized capabilities:
+Show VapourltAgent as a platform with 4 productized capabilities:
 
 - Case intake
 - Evidence tracking
@@ -156,7 +156,7 @@ Show a repeatable operational workflow:
 4. Review recommendation
 5. Track progression
 
-This should visually reinforce that VaporVault is a structured operational system.
+This should visually reinforce that VapourltAgent is a structured operational system.
 
 ==================================================
 PRODUCT PREVIEW
@@ -182,7 +182,7 @@ Suggested heading:
 Built around a structured assessment engine.
 
 Suggested body:
-The VaporVault Recovery Readiness Engine classifies incoming cases, scores available evidence, identifies proof gaps, and generates a structured recovery recommendation.
+The VapourltAgent Recovery Readiness Engine classifies incoming cases, scores available evidence, identifies proof gaps, and generates a structured recovery recommendation.
 
 Include a compact visual flow:
 Case Input → Evidence Scoring → Readiness Assessment → Recommendation Output
@@ -268,7 +268,7 @@ DEFINITION OF DONE
 
 The redesign is done when:
 - the site no longer sounds like an agency
-- the copy clearly positions VaporVault as vertical SaaS
+- the copy clearly positions VapourltAgent as vertical SaaS
 - the hero shows real product surfaces
 - the engine has a dedicated section
 - the site clearly states there is a working product loop

@@ -20,7 +20,7 @@ The engine should:
 - be easy to explain in a demo
 
 ## Product context
-The product is VaporVault.
+The product is VapourltAgent.
 
 For now, treat it as a lawful digital asset recovery workflow assistant for authorized users.
 It should help a user:

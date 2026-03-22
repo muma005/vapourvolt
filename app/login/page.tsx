@@ -5,10 +5,10 @@ export default function LoginPage() {
     <AuthShell
       mode="login"
       label="Login"
-      title="Access the VaporVault product workspace."
+      title="Access the VapourltAgent product workspace."
       description="Sign in to review saved cases, track readiness state, and manage recovery operations in one structured system."
       submitLabel="Log In"
-      altLabel="New to VaporVault?"
+      altLabel="New to VapourltAgent?"
       altHref="/signup"
       altLinkText="Create an account"
       fields={[

@@ -52,7 +52,7 @@ const sampleCaseSeeds: Array<Omit<DemoCaseRecord, "assessment">> = [
     subtitle: "Legacy domain recovery for a dissolved product line",
     input: {
       assetType: "Domain",
-      assetName: "vaporvaultlabs.com",
+      assetName: "vapourltagentlabs.com",
       organization: "Vapor Labs Ltd",
       reasonForRecovery: "Legacy domain tied to inactive business unit",
       notes: "Registrar trail exists, but claimant authorization should be refreshed before final submission.",
@@ -78,8 +78,8 @@ const sampleCaseSeeds: Array<Omit<DemoCaseRecord, "assessment">> = [
     subtitle: "Handle recovery case with incomplete historical records",
     input: {
       assetType: "Social Handle",
-      assetName: "@vaporvaulthq",
-      organization: "VaporVault Holdings",
+      assetName: "@vapourltagenthq",
+      organization: "VapourltAgent Holdings",
       reasonForRecovery: "Brand handle recovery with incomplete historical records",
       notes: "Historic screenshots are partial and support escalation has not been reopened.",
       evidenceSignals: {

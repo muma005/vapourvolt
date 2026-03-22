@@ -1,9 +1,9 @@
 import { randomUUID } from "@/lib/utils";
 import type { SavedCase, ProductSession, ProductUserRecord, StoredCaseRecord } from "@/lib/product/types";
 
-const USERS_KEY = "vapourvault_users_v4";
-const SESSION_KEY = "vapourvault_session_v4";
-const CASES_KEY = "vapourvault_cases_v4";
+const USERS_KEY = "vapourltagent_users_v4";
+const SESSION_KEY = "vapourltagent_session_v4";
+const CASES_KEY = "vapourltagent_cases_v4";
 
 function canUseStorage() {
   return typeof window !== "undefined";

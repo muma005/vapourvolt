@@ -5,7 +5,7 @@ export default function SignupPage() {
     <AuthShell
       mode="signup"
       label="Sign up"
-      title="Create a VaporVault workspace."
+      title="Create a VapourltAgent workspace."
       description="Create an account for your operations, legal, or brand protection team and start running case intake, readiness scoring, and progression in one platform."
       submitLabel="Sign Up"
       altLabel="Already have an account?"

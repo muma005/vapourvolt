@@ -19,7 +19,7 @@ export function Navbar() {
             VV
           </span>
           <div>
-            <p className="text-base font-semibold text-ink">VaporVault</p>
+            <p className="text-base font-semibold text-ink">VapourltAgent</p>
             <p className="text-xs text-muted">Recovery operations platform</p>
           </div>
         </Link>

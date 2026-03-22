@@ -1,6 +1,6 @@
 You are a senior product engineer, product designer, and pragmatic MVP architect.
 
-Your task is to redesign and implement VaporVault as a real vertical SaaS MVP inside this repository.
+Your task is to redesign and implement VapourltAgent as a real vertical SaaS MVP inside this repository.
 
 Read the existing codebase first.
 Understand what already exists.
@@ -14,13 +14,13 @@ Do not turn this into a services website.
 Do not build fake UI-only product flows.
 Do not include anything involving unauthorized access, impersonation, bypass, account takeover, or illegal recovery behavior.
 
-The goal is to make VaporVault feel like a real software product with a narrow but working product loop.
+The goal is to make VapourltAgent feel like a real software product with a narrow but working product loop.
 
 ==================================================
 PRODUCT POSITIONING
 ==================================================
 
-VaporVault should feel like a vertical SaaS product.
+VapourltAgent should feel like a vertical SaaS product.
 
 It should NOT feel like:
 - an agency
@@ -38,9 +38,9 @@ It SHOULD feel like:
 
 The right framing is:
 
-VaporVault is a vertical SaaS platform for digital asset recovery operations.
+VapourltAgent is a vertical SaaS platform for digital asset recovery operations.
 
-At its core, VaporVault provides:
+At its core, VapourltAgent provides:
 - case intake
 - evidence tracking
 - recovery readiness scoring
@@ -132,7 +132,7 @@ ENGINE LAYER
 IMPORTANT PRODUCT RULE
 ==================================================
 
-Do not make VaporVault sound like:
+Do not make VapourltAgent sound like:
 “software that helps people do a service.”
 
 Make it sound like:
@@ -251,7 +251,7 @@ Headline:
 The case management and recovery readiness platform for digital asset operations.
 
 Subheadline:
-VaporVault centralizes case intake, evidence tracking, readiness scoring, and case progression in one structured system.
+VapourltAgent centralizes case intake, evidence tracking, readiness scoring, and case progression in one structured system.
 
 Primary CTA:
 Get Started
@@ -744,8 +744,8 @@ MOST IMPORTANT RULE
 
 Do not leave this as a polished agency-style website.
 
-Turn VaporVault into a real vertical SaaS product with a working loop:
+Turn VapourltAgent into a real vertical SaaS product with a working loop:
 
 marketing site -> auth -> protected app -> case intake -> deterministic assessment -> saved case -> dashboard revisit
 
-That is VaporVault v1.
+That is VapourltAgent v1.

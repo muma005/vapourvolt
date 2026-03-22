@@ -197,7 +197,7 @@ export function NewCaseFlow() {
                   className="field mt-2"
                   value={form.assetName}
                   onChange={(event) => updateField("assetName", event.target.value)}
-                  placeholder="vaporvaultlabs.com"
+                  placeholder="vapourltagentlabs.com"
                   required
                 />
               </label>

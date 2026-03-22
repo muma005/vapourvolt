@@ -31,7 +31,7 @@ export function AppSidebar({
   return (
     <aside className="w-full rounded-[1.75rem] border border-[rgba(22,28,40,0.08)] bg-[rgba(255,253,248,0.88)] p-5 lg:w-[260px]">
       <div className="rounded-2xl bg-[var(--color-primary)] px-4 py-4 text-white">
-        <p className="text-xs uppercase tracking-[0.18em] text-white/70">VaporVault</p>
+        <p className="text-xs uppercase tracking-[0.18em] text-white/70">VapourltAgent</p>
         <p className="mt-2 text-lg font-semibold">Recovery operations platform</p>
       </div>
 

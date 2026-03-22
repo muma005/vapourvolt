@@ -72,9 +72,9 @@ const trustCards = [
 
 const faqs = [
   {
-    question: "What kind of product is VaporVault?",
+    question: "What kind of product is VapourltAgent?",
     answer:
-      "VaporVault is a case management and recovery readiness platform for digital asset operations. It centralizes intake, evidence tracking, readiness scoring, and case progression in one product workflow.",
+      "VapourltAgent is a case management and recovery readiness platform for digital asset operations. It centralizes intake, evidence tracking, readiness scoring, and case progression in one product workflow.",
   },
   {
     question: "What is the Recovery Readiness Engine?",
@@ -87,9 +87,9 @@ const faqs = [
       "It is a working product loop. Users can sign in, create a case, run an assessment, and revisit saved cases from the dashboard.",
   },
   {
-    question: "Does VaporVault automate recovery actions?",
+    question: "Does VapourltAgent automate recovery actions?",
     answer:
-      "No. VaporVault is a structured operations platform. It provides readiness scoring, evidence tracking, and review outputs, but it does not perform unauthorized access or automated recovery behavior.",
+      "No. VapourltAgent is a structured operations platform. It provides readiness scoring, evidence tracking, and review outputs, but it does not perform unauthorized access or automated recovery behavior.",
   },
   {
     question: "Who is it built for?",
@@ -129,7 +129,7 @@ function HeroPreview() {
           <span className="ui-frame__dot bg-[rgba(63,120,86,0.85)]" />
         </div>
         <div className="rounded-full border border-[rgba(22,28,40,0.08)] bg-white/80 px-3 py-1 text-[11px] font-medium text-muted">
-          vaporvault.app
+          vapourltagent.app
         </div>
       </div>
 
@@ -145,8 +145,8 @@ function HeroPreview() {
             </div>
             <div className="mt-4 space-y-3">
               {[
-                ["vaporvaultlabs.com", "Ready for Submission Review"],
-                ["@vaporvaulthq", "Manual Review Required"],
+                ["vapourltagentlabs.com", "Ready for Submission Review"],
+                ["@vapourltagenthq", "Manual Review Required"],
                 ["Workspace-19", "Needs Evidence"],
               ].map(([label, status], index) => (
                 <div
@@ -266,7 +266,7 @@ function HeroSplit() {
             The case management and recovery readiness platform for digital asset operations.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">
-            VaporVault centralizes case intake, evidence tracking, readiness scoring, and case progression in one
+            VapourltAgent centralizes case intake, evidence tracking, readiness scoring, and case progression in one
             structured system.
           </p>
 
@@ -294,7 +294,7 @@ function ProblemCardGrid() {
         <SectionHeader
           label="The problem"
           title="Recovery cases break when evidence, ownership signals, and next steps are scattered across disconnected tools."
-          description="The workflow often fragments across inboxes, screenshots, support threads, notes, and spreadsheets. VaporVault addresses that as a software systems problem, not a service coordination problem."
+          description="The workflow often fragments across inboxes, screenshots, support threads, notes, and spreadsheets. VapourltAgent addresses that as a software systems problem, not a service coordination problem."
         />
 
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
@@ -314,7 +314,7 @@ function CapabilitiesGrid() {
         <SectionHeader
           label="Product capabilities"
           title="A productized workflow built around case intake, evidence tracking, readiness scoring, and progression."
-          description="Each capability is visible in the product itself. VaporVault is a workspace teams log into, not a service wrapper around manual process."
+          description="Each capability is visible in the product itself. VapourltAgent is a workspace teams log into, not a service wrapper around manual process."
         />
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -440,7 +440,7 @@ function EngineSection() {
           <SectionHeader
             label="Recovery Readiness Engine"
             title="Built around a structured assessment engine."
-            description="The VaporVault Recovery Readiness Engine classifies incoming cases, scores available evidence, identifies proof gaps, and generates a structured recovery recommendation."
+            description="The VapourltAgent Recovery Readiness Engine classifies incoming cases, scores available evidence, identifies proof gaps, and generates a structured recovery recommendation."
           />
         </div>
 
@@ -508,7 +508,7 @@ function TrustGrid() {
         <SectionHeader
           label="Trust and compliance"
           title="Software-first, but safely framed for documented case operations."
-          description="VaporVault is positioned around structured workflows, bounded recommendations, and audit-friendly progression tracking."
+          description="VapourltAgent is positioned around structured workflows, bounded recommendations, and audit-friendly progression tracking."
         />
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -574,7 +574,7 @@ export function LandingPage() {
           <SectionHeader
             label="FAQ"
             title="Answers for teams evaluating the platform."
-            description="The website now presents VaporVault as working software: real sign-in, structured case intake, a readiness engine, and saved case revisit."
+            description="The website now presents VapourltAgent as working software: real sign-in, structured case intake, a readiness engine, and saved case revisit."
           />
 
           <div className="mt-10 grid gap-4">

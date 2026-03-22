@@ -1,6 +1,6 @@
 You are a senior product engineer and pragmatic MVP architect.
 
-Your task is to implement the working VaporVault product layer inside this repository.
+Your task is to implement the working VapourltAgent product layer inside this repository.
 
 Read the existing codebase first.
 Understand what already exists.
@@ -19,7 +19,7 @@ Important constraints:
 GOAL
 ==================================================
 
-Build a real, narrow vertical SaaS MVP for VaporVault.
+Build a real, narrow vertical SaaS MVP for VapourltAgent.
 
 A user should be able to:
 1. sign up or sign in
@@ -37,7 +37,7 @@ This must be a real product loop, not a static demo.
 PRODUCT SHAPE
 ==================================================
 
-VaporVault is a case management and recovery readiness platform for digital asset operations.
+VapourltAgent is a case management and recovery readiness platform for digital asset operations.
 
 The product should feel like:
 - a category-specific workspace

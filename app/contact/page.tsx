@@ -11,7 +11,7 @@ export default function ContactPage() {
           <Card className="p-8 sm:p-10">
             <SectionHeader
               label="Early access"
-              title="Request access to VaporVault."
+              title="Request access to VapourltAgent."
               description="Share your team details and use case. This page is still local-only in v1, but it is framed like the product access intake we would ship next."
             />
 
@@ -38,8 +38,8 @@ export default function ContactPage() {
 
               <div className="flex flex-wrap items-center gap-4 pt-2">
                 <PrimaryButton type="button">Request Access</PrimaryButton>
-                <a href="mailto:hello@vaporvault.co" className="text-sm font-medium text-muted transition hover:text-ink">
-                  Or email hello@vaporvault.co
+                <a href="mailto:hello@vapourltagent.co" className="text-sm font-medium text-muted transition hover:text-ink">
+                  Or email hello@vapourltagent.co
                 </a>
               </div>
             </form>
@@ -50,7 +50,7 @@ export default function ContactPage() {
               <p className="text-xs uppercase tracking-[0.16em] text-muted">Contact</p>
               <h2 className="mt-3 text-2xl font-semibold text-ink">Built for serious operations teams.</h2>
               <p className="mt-4 text-sm leading-7 text-muted">
-                VaporVault is positioned for operations, legal, brand protection, and internal portfolio teams
+                VapourltAgent is positioned for operations, legal, brand protection, and internal portfolio teams
                 managing digital asset recovery cases as an operational system.
               </p>
               <div className="mt-6 grid gap-3">
@@ -81,7 +81,7 @@ export default function ContactPage() {
             <Card className="p-6" id="terms">
               <p className="text-sm font-semibold text-ink">Terms</p>
               <p className="mt-3 text-sm leading-7 text-muted">
-                VaporVault is a case management and readiness platform. It does not support unauthorized access,
+                VapourltAgent is a case management and readiness platform. It does not support unauthorized access,
                 bypass, or account takeover methods.
               </p>
             </Card>

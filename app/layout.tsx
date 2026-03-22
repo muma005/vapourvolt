@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "VaporVault",
+  title: "VapourltAgent",
   description: "The case management and recovery readiness platform for digital asset operations.",
 };
 

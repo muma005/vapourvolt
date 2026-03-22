@@ -45,7 +45,7 @@ export function AuthShell({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const helperCopy =
     mode === "signup"
-      ? "Create an email/password account to enter the VaporVault product workspace and save recovery cases."
+      ? "Create an email/password account to enter the VapourltAgent product workspace and save recovery cases."
       : "Sign in to access your saved cases, readiness assessments, and case progression workspace.";
 
   useEffect(() => {
