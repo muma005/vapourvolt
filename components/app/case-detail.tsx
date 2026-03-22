@@ -3,16 +3,16 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { CaseReport } from "@/components/app/case-report";
-import { findBrowserCaseById } from "@/lib/auth/browser-auth";
-import type { SavedCase } from "@/lib/db/types";
+import { findCaseById } from "@/lib/product/workspace-store";
+import type { SavedCase } from "@/lib/product/types";
 
-export function LocalCaseDetail({ caseId }: { caseId: string }) {
+export function CaseDetail({ caseId }: { caseId: string }) {
   const router = useRouter();
   const [caseItem, setCaseItem] = useState<SavedCase | null>(null);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const nextCase = findBrowserCaseById(caseId);
+    const nextCase = findCaseById(caseId);
 
     if (!nextCase) {
       router.replace("/app");

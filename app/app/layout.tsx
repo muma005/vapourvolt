@@ -1,11 +1,9 @@
-import { LocalAppShell } from "@/components/app/local-app-shell";
+import { AppShell } from "@/components/app/app-shell";
 
 export default async function ProtectedAppLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <LocalAppShell>{children}</LocalAppShell>
-  );
+  return <AppShell>{children}</AppShell>;
 }

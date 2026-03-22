@@ -1,5 +1,5 @@
-import { LocalDashboard } from "@/components/app/local-dashboard";
+import { Dashboard } from "@/components/app/dashboard";
 
 export default function AppDashboardPage() {
-  return <LocalDashboard />;
+  return <Dashboard />;
 }

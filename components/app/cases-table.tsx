@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { StatusBadge } from "@/components/ui/status-badge";
 import { Card } from "@/components/ui/primitives";
-import type { SavedCase } from "@/lib/db/types";
+import type { SavedCase } from "@/lib/product/types";
 
 export function CasesTable({ cases }: { cases: SavedCase[] }) {
   return (

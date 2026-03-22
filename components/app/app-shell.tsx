@@ -3,15 +3,16 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { AppSidebar } from "@/components/app/app-sidebar";
-import { getBrowserSession, type BrowserSession } from "@/lib/auth/browser-auth";
+import { getCurrentSession } from "@/lib/product/workspace-store";
+import type { ProductSession } from "@/lib/product/types";
 
-export function LocalAppShell({ children }: { children: React.ReactNode }) {
+export function AppShell({ children }: { children: React.ReactNode }) {
   const router = useRouter();
-  const [session, setSession] = useState<BrowserSession | null>(null);
+  const [session, setSession] = useState<ProductSession | null>(null);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const nextSession = getBrowserSession();
+    const nextSession = getCurrentSession();
 
     if (!nextSession) {
       router.replace("/login");

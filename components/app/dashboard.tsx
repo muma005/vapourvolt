@@ -4,14 +4,14 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { CasesTable } from "@/components/app/cases-table";
 import { Card, MetricCard, PrimaryButton } from "@/components/ui/primitives";
-import { listBrowserCasesForCurrentUser } from "@/lib/auth/browser-auth";
-import type { SavedCase } from "@/lib/db/types";
+import { listCasesForCurrentUser } from "@/lib/product/workspace-store";
+import type { SavedCase } from "@/lib/product/types";
 
-export function LocalDashboard() {
+export function Dashboard() {
   const [cases, setCases] = useState<SavedCase[]>([]);
 
   useEffect(() => {
-    setCases(listBrowserCasesForCurrentUser());
+    setCases(listCasesForCurrentUser());
   }, []);
 
   const highReadiness = cases.filter((caseItem) => caseItem.assessment.readinessLevel === "High").length;
@@ -27,7 +27,8 @@ export function LocalDashboard() {
               Digital asset recovery operations workspace
             </h1>
             <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-              Centralize case intake, score readiness, and track case progression through a structured system of record.
+              Manage case intake, readiness scoring, and progression in one structured workspace. Cases created here
+              remain available in this browser so the product loop stays dependable in the current MVP.
             </p>
           </div>
           <PrimaryButton href="/app/cases/new">New Case</PrimaryButton>
@@ -46,7 +47,8 @@ export function LocalDashboard() {
         <Card className="p-8 sm:p-10">
           <h2 className="text-2xl font-semibold text-ink">No cases yet</h2>
           <p className="mt-4 max-w-xl text-base leading-7 text-muted">
-            Create your first recovery case to generate a structured readiness report and save it into the dashboard.
+            Create your first recovery case to generate a structured readiness report and save it into this browser
+            workspace.
           </p>
           <div className="mt-8">
             <PrimaryButton href="/app/cases/new">Create First Case</PrimaryButton>
@@ -61,7 +63,7 @@ export function LocalDashboard() {
             {[
               "Route high-readiness cases toward submission review",
               "Close documentation gaps on cases with open proof requirements",
-              "Keep evidence, readiness, and review state inside one system of record",
+              "Keep evidence, readiness, and review state inside one structured browser workspace",
             ].map((item) => (
               <div
                 key={item}

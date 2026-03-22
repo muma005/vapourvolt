@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { PrimaryButton } from "@/components/ui/primitives";
-import { clearBrowserSession, getBrowserSession } from "@/lib/auth/browser-auth";
+import { getCurrentSession, logoutCurrentUser } from "@/lib/product/workspace-store";
 import { cn } from "@/lib/utils";
 
 const navItems = [
@@ -20,12 +20,12 @@ export function AppSidebar({
   const pathname = usePathname();
 
   async function handleSignOut() {
-    clearBrowserSession();
+    logoutCurrentUser();
     router.push("/");
     router.refresh();
   }
 
-  const session = getBrowserSession();
+  const session = getCurrentSession();
   const displayedEmail = session?.email ?? email;
 
   return (

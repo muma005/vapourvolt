@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { Card, PrimaryButton, SecondaryButton } from "@/components/ui/primitives";
-import { getBrowserSession, loginBrowserUser, signUpBrowserUser } from "@/lib/auth/browser-auth";
+import { getCurrentSession, loginUser, signUpUser } from "@/lib/product/workspace-store";
 
 type AuthShellProps = {
   mode: "login" | "signup";
@@ -49,7 +49,7 @@ export function AuthShell({
       : "Sign in to access your saved cases, readiness assessments, and case progression workspace.";
 
   useEffect(() => {
-    if (getBrowserSession()) {
+    if (getCurrentSession()) {
       router.replace("/app");
     }
   }, [router]);
@@ -70,13 +70,13 @@ export function AuthShell({
     try {
       const result =
         mode === "signup"
-          ? signUpBrowserUser({
+          ? signUpUser({
               name: values.name ?? "",
               company: values.company ?? "",
               email: values.email ?? "",
               password: values.password ?? "",
             })
-          : loginBrowserUser({
+          : loginUser({
               email: values.email ?? "",
               password: values.password ?? "",
             });
@@ -158,7 +158,7 @@ export function AuthShell({
 
               <div className="flex items-center justify-between rounded-2xl border border-[rgba(22,28,40,0.08)] bg-[rgba(240,237,229,0.72)] px-4 py-3">
                 <p className="text-sm text-ink">
-                  Local email/password authentication with protected product routes and local case storage.
+                  Email/password access with protected routes and saved case records in this browser workspace.
                 </p>
                 <Link href="/contact" className="text-sm font-medium text-[var(--color-primary)]">
                   Need help?

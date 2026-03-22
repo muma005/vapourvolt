@@ -1,27 +1,9 @@
 import { randomUUID } from "@/lib/utils";
-import type { SavedCase } from "@/lib/db/types";
+import type { SavedCase, ProductSession, ProductUserRecord, StoredCaseRecord } from "@/lib/product/types";
 
-export type BrowserUser = {
-  id: string;
-  name: string;
-  company: string;
-  email: string;
-  password: string;
-  createdAt: string;
-};
-
-export type BrowserSession = {
-  id: string;
-  name: string;
-  company: string;
-  email: string;
-};
-
-type BrowserStoredCase = SavedCase & { userId: string };
-
-const USERS_KEY = "vapourvault_users_v3";
-const SESSION_KEY = "vapourvault_session_v3";
-const CASES_KEY = "vapourvault_cases_v3";
+const USERS_KEY = "vapourvault_users_v4";
+const SESSION_KEY = "vapourvault_session_v4";
+const CASES_KEY = "vapourvault_cases_v4";
 
 function canUseStorage() {
   return typeof window !== "undefined";
@@ -52,7 +34,7 @@ function writeJson(key: string, value: unknown) {
   window.localStorage.setItem(key, JSON.stringify(value));
 }
 
-function buildSession(user: BrowserUser): BrowserSession {
+function buildSession(user: ProductUserRecord): ProductSession {
   return {
     id: user.id,
     name: user.name,
@@ -61,11 +43,11 @@ function buildSession(user: BrowserUser): BrowserSession {
   };
 }
 
-export function getBrowserSession() {
-  return readJson<BrowserSession | null>(SESSION_KEY, null);
+export function getCurrentSession() {
+  return readJson<ProductSession | null>(SESSION_KEY, null);
 }
 
-export function clearBrowserSession() {
+export function logoutCurrentUser() {
   if (!canUseStorage()) {
     return;
   }
@@ -73,7 +55,7 @@ export function clearBrowserSession() {
   window.localStorage.removeItem(SESSION_KEY);
 }
 
-export function signUpBrowserUser(input: {
+export function signUpUser(input: {
   name: string;
   company: string;
   email: string;
@@ -92,13 +74,13 @@ export function signUpBrowserUser(input: {
     return { ok: false as const, error: "Use a password with at least 8 characters." };
   }
 
-  const users = readJson<BrowserUser[]>(USERS_KEY, []);
+  const users = readJson<ProductUserRecord[]>(USERS_KEY, []);
 
   if (users.some((user) => user.email === email)) {
     return { ok: false as const, error: "An account with this email already exists. Try logging in instead." };
   }
 
-  const user: BrowserUser = {
+  const user: ProductUserRecord = {
     id: randomUUID(),
     name,
     company,
@@ -113,7 +95,7 @@ export function signUpBrowserUser(input: {
   return { ok: true as const, user: buildSession(user) };
 }
 
-export function loginBrowserUser(input: { email: string; password: string }) {
+export function loginUser(input: { email: string; password: string }) {
   const email = normalizeEmail(input.email);
   const password = input.password;
 
@@ -121,7 +103,7 @@ export function loginBrowserUser(input: { email: string; password: string }) {
     return { ok: false as const, error: "Enter your email and password." };
   }
 
-  const users = readJson<BrowserUser[]>(USERS_KEY, []);
+  const users = readJson<ProductUserRecord[]>(USERS_KEY, []);
   const user = users.find((entry) => entry.email === email);
 
   if (!user || user.password !== password) {
@@ -132,9 +114,9 @@ export function loginBrowserUser(input: { email: string; password: string }) {
   return { ok: true as const, user: buildSession(user) };
 }
 
-export function listBrowserCasesForCurrentUser() {
-  const session = getBrowserSession();
-  const cases = readJson<BrowserStoredCase[]>(CASES_KEY, []);
+export function listCasesForCurrentUser() {
+  const session = getCurrentSession();
+  const cases = readJson<StoredCaseRecord[]>(CASES_KEY, []);
 
   if (!session) {
     return [];
@@ -143,11 +125,18 @@ export function listBrowserCasesForCurrentUser() {
   return cases.filter((caseItem) => caseItem.userId === session.id);
 }
 
-export function saveBrowserCase(caseItem: BrowserStoredCase) {
-  const cases = readJson<BrowserStoredCase[]>(CASES_KEY, []);
+export function saveCaseRecord(caseItem: StoredCaseRecord) {
+  const cases = readJson<StoredCaseRecord[]>(CASES_KEY, []);
   writeJson(CASES_KEY, [caseItem, ...cases.filter((item) => item.id !== caseItem.id)]);
 }
 
-export function findBrowserCaseById(caseId: string) {
-  return listBrowserCasesForCurrentUser().find((caseItem) => caseItem.id === caseId) ?? null;
+export function findCaseById(caseId: string) {
+  return listCasesForCurrentUser().find((caseItem) => caseItem.id === caseId) ?? null;
+}
+
+export function createStoredCaseRecord(input: SavedCase, userId: string): StoredCaseRecord {
+  return {
+    ...input,
+    userId,
+  };
 }

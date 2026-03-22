@@ -1,6 +1,6 @@
 import { Card, MetricCard } from "@/components/ui/primitives";
 import { StatusBadge } from "@/components/ui/status-badge";
-import type { SavedCase } from "@/lib/db/types";
+import type { SavedCase } from "@/lib/product/types";
 
 export function CaseReport({ caseItem }: { caseItem: SavedCase }) {
   return (

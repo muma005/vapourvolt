@@ -1,4 +1,4 @@
-import { LocalCaseDetail } from "@/components/app/local-case-detail";
+import { CaseDetail } from "@/components/app/case-detail";
 
 export default async function CaseDetailPage({
   params,
@@ -6,5 +6,5 @@ export default async function CaseDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  return <LocalCaseDetail caseId={id} />;
+  return <CaseDetail caseId={id} />;
 }

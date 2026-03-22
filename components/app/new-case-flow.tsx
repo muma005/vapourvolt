@@ -6,8 +6,8 @@ import { Card, PrimaryButton, SecondaryButton } from "@/components/ui/primitives
 import { cn, randomUUID } from "@/lib/utils";
 import { emptyEvidenceSignals, signalOptions } from "@/data/sampleCases";
 import { evaluateCase } from "@/lib/engine";
-import { getBrowserSession, saveBrowserCase } from "@/lib/auth/browser-auth";
-import type { SavedCase } from "@/lib/db/types";
+import { createStoredCaseRecord, getCurrentSession, saveCaseRecord } from "@/lib/product/workspace-store";
+import type { SavedCase } from "@/lib/product/types";
 
 type AppCaseForm = {
   assetType: "Domain" | "Social Handle" | "SaaS Account" | "Other" | "";
@@ -42,7 +42,7 @@ export function NewCaseFlow() {
   const [form, setForm] = useState<AppCaseForm>(emptyForm);
 
   useEffect(() => {
-    if (!getBrowserSession()) {
+    if (!getCurrentSession()) {
       router.replace("/login");
       return;
     }
@@ -98,7 +98,7 @@ export function NewCaseFlow() {
     try {
       await new Promise((resolve) => window.setTimeout(resolve, 1900));
 
-      const session = getBrowserSession();
+      const session = getCurrentSession();
 
       if (!session) {
         throw new Error("Sign in to create a case.");
@@ -106,16 +106,15 @@ export function NewCaseFlow() {
 
       const assessment = evaluateCase(payload);
       const caseId = randomUUID();
-      const caseItem: SavedCase & { userId: string } = {
+      const caseItem: SavedCase = {
         id: caseId,
-        userId: session.id,
         status: assessment.reviewStatus,
         createdAt: new Date().toISOString(),
         input: payload,
         assessment,
       };
 
-      saveBrowserCase(caseItem);
+      saveCaseRecord(createStoredCaseRecord(caseItem, session.id));
       router.push(`/app/cases/${caseId}`);
       router.refresh();
     } catch (caughtError) {
@@ -168,7 +167,7 @@ export function NewCaseFlow() {
           Create a recovery case
         </h1>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-          Capture the case record, score readiness, and save the resulting assessment into the product workspace.
+          Capture the case record, score readiness, and save the resulting assessment into this browser workspace.
         </p>
       </Card>
 
