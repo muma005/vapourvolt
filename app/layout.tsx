@@ -5,7 +5,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "VaporVault",
-  description: "Structured workflows for lawful digital asset recovery.",
+  description: "The case management and recovery readiness platform for digital asset operations.",
 };
 
 export default function RootLayout({

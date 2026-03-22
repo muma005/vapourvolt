@@ -4,5 +4,5 @@ export function buildAssessmentSummary(input: CaseInput, assessment: Omit<Assess
   const presentSignals = assessment.evidenceBreakdown.filter((item) => item.present).length;
   const missingItems = assessment.requiredDocuments.length;
 
-  return `${input.assetName} is classified as ${assessment.caseType.toLowerCase()} with a ${assessment.readinessLevel.toLowerCase()} readiness score of ${assessment.readinessScore}%. ${presentSignals} evidence signals are present, ${missingItems} document requirements remain, and the recommended lawful path is ${assessment.recommendedPath.toLowerCase()}.`;
+  return `${input.assetName} is classified as ${assessment.caseType.toLowerCase()} with a ${assessment.readinessLevel.toLowerCase()} readiness score of ${assessment.readinessScore}%. ${presentSignals} evidence signals are currently present, ${missingItems} required records remain in the case file, and the next platform path is ${assessment.recommendedPath.toLowerCase()}.`;
 }

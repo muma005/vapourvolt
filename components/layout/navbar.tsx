@@ -19,7 +19,7 @@ export function Navbar() {
           </span>
           <div>
             <p className="text-base font-semibold text-ink">VaporVault</p>
-            <p className="text-xs text-muted">Lawful recovery workflow</p>
+            <p className="text-xs text-muted">Recovery operations platform</p>
           </div>
         </Link>
 
@@ -35,7 +35,7 @@ export function Navbar() {
           <Link href="/login" className="text-sm font-medium text-muted transition hover:text-ink">
             Log In
           </Link>
-          <PrimaryButton href="/signup">Sign Up</PrimaryButton>
+          <PrimaryButton href="/signup">Get Started</PrimaryButton>
         </div>
       </div>
     </header>

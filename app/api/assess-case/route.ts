@@ -25,7 +25,7 @@ function parseEvidenceSignals(value: unknown): EvidenceSignals | null {
 }
 
 function parseAssetType(value: unknown): AssetType | null {
-  if (value === "Domain" || value === "Social Handle" || value === "SaaS Account") {
+  if (value === "Domain" || value === "Social Handle" || value === "SaaS Account" || value === "Other") {
     return value;
   }
 

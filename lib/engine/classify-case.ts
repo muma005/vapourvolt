@@ -4,40 +4,45 @@ export function classifyCase(input: CaseInput): ClassifiedCase {
   const reason = input.reasonForRecovery.toLowerCase();
 
   if (input.assetType === "Domain") {
-    if (reason.includes("portfolio")) {
+    if (
+      reason.includes("portfolio") ||
+      reason.includes("legacy") ||
+      reason.includes("dormant") ||
+      reason.includes("inactive")
+    ) {
       return {
-        caseType: "Portfolio recovery",
-        recommendedPath: "Registrar-assisted ownership recovery",
-        assetSpecificRequirement: "Archive or DNS evidence",
-      };
-    }
-
-    if (reason.includes("legacy") || reason.includes("dormant") || reason.includes("inactive")) {
-      return {
-        caseType: "Dormant asset recovery",
-        recommendedPath: "Registrar-assisted ownership recovery",
-        assetSpecificRequirement: "Archive or DNS evidence",
+        caseType: "Dormant domain recovery",
+        defaultPath: "Registrar-assisted ownership recovery",
+        assetSpecificRequirement: "Archived site evidence",
       };
     }
 
     return {
-      caseType: "Domain ownership recovery",
-      recommendedPath: "Registrar-assisted ownership recovery",
-      assetSpecificRequirement: "Archive or DNS evidence",
+      caseType: "Dormant domain recovery",
+      defaultPath: "Registrar-assisted ownership recovery",
+      assetSpecificRequirement: "Archived site evidence",
     };
   }
 
   if (input.assetType === "Social Handle") {
     return {
-      caseType: "Brand identity recovery",
-      recommendedPath: "Platform-supported identity and brand review",
-      assetSpecificRequirement: "Historic profile or archive evidence",
+      caseType: "Branded handle recovery",
+      defaultPath: "Manual platform escalation",
+      assetSpecificRequirement: "Historic profile evidence",
+    };
+  }
+
+  if (input.assetType === "SaaS Account") {
+    return {
+      caseType: "Administrative account recovery",
+      defaultPath: "Administrative ownership review",
+      assetSpecificRequirement: "Prior admin continuity evidence",
     };
   }
 
   return {
-    caseType: "Administrative continuity restoration",
-    recommendedPath: "Administrative continuity review and workspace recovery",
-    assetSpecificRequirement: "Prior admin continuity evidence",
+    caseType: "General documentation review case",
+    defaultPath: "Documentation review and manual triage",
+    assetSpecificRequirement: "Supporting ownership documentation",
   };
 }

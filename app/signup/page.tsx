@@ -3,9 +3,10 @@ import { AuthShell } from "@/components/auth/auth-shell";
 export default function SignupPage() {
   return (
     <AuthShell
+      mode="signup"
       label="Sign up"
       title="Create a VaporVault workspace."
-      description="Set up a new account for your operations, legal, or brand protection team and start structuring recovery cases in a single workflow."
+      description="Create an account for your operations, legal, or brand protection team and start running case intake, readiness scoring, and progression in one platform."
       submitLabel="Sign Up"
       altLabel="Already have an account?"
       altHref="/login"

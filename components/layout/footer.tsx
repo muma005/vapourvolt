@@ -18,7 +18,7 @@ export function Footer() {
         <div>
           <p className="text-lg font-semibold text-ink">VaporVault</p>
           <p className="mt-3 max-w-sm text-sm leading-7 text-muted">
-            Structured workflows for lawful digital asset recovery.
+            A system of record for digital asset recovery operations.
           </p>
         </div>
 
@@ -35,10 +35,13 @@ export function Footer() {
 
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-muted">Contact</p>
-          <a href="mailto:hello@vaporvault.co" className="mt-4 inline-block text-sm text-ink transition hover:text-[var(--color-primary)]">
+          <a
+            href="mailto:hello@vaporvault.co"
+            className="mt-4 inline-block text-sm text-ink transition hover:text-[var(--color-primary)]"
+          >
             hello@vaporvault.co
           </a>
-          <p className="mt-8 text-xs text-muted">© 2026 VaporVault. All rights reserved.</p>
+          <p className="mt-8 text-xs text-muted">(c) 2026 VaporVault. All rights reserved.</p>
         </div>
       </div>
     </footer>

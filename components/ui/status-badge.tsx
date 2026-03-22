@@ -6,8 +6,7 @@ function inferTone(value: string) {
   if (
     normalized.includes("strong") ||
     normalized.includes("ready") ||
-    normalized.includes("low") ||
-    normalized.includes("blocked")
+    normalized.includes("low")
   ) {
     return "success";
   }
@@ -22,7 +21,13 @@ function inferTone(value: string) {
     return "warning";
   }
 
-  if (normalized.includes("none") || normalized.includes("high") || normalized.includes("needs")) {
+  if (
+    normalized.includes("none") ||
+    normalized.includes("high") ||
+    normalized.includes("needs") ||
+    normalized.includes("blocked") ||
+    normalized.includes("manual")
+  ) {
     return "danger";
   }
 

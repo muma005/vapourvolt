@@ -3,9 +3,10 @@ import { AuthShell } from "@/components/auth/auth-shell";
 export default function LoginPage() {
   return (
     <AuthShell
+      mode="login"
       label="Login"
-      title="Access your recovery workspace."
-      description="Sign in to review case assessments, continue documentation work, and track lawful recovery workflows across your team."
+      title="Access the VaporVault product workspace."
+      description="Sign in to review saved cases, track readiness state, and manage recovery operations in one structured system."
       submitLabel="Log In"
       altLabel="New to VaporVault?"
       altHref="/signup"

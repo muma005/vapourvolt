@@ -125,14 +125,14 @@ const sampleCaseSeeds: Array<Omit<DemoCaseRecord, "assessment">> = [
     ],
   },
   {
-    id: "legacy-domain-portfolio",
-    title: "Legacy domain portfolio",
-    subtitle: "Portfolio cleanup for inactive legacy brand property",
+    id: "documentation-review-case",
+    title: "Documentation review case",
+    subtitle: "General review case for a digital property without a standard asset type",
     input: {
-      assetType: "Domain",
-      assetName: "oldbrand.io",
+      assetType: "Other",
+      assetName: "Legacy property packet",
       organization: "OldBrand Group",
-      reasonForRecovery: "Portfolio cleanup for inactive legacy brand property",
+      reasonForRecovery: "Documentation review for a legacy digital property with mixed ownership records",
       notes: "Archive evidence is present, but claimant paperwork is still being assembled.",
       evidenceSignals: {
         trademarkRecord: false,
@@ -145,9 +145,10 @@ const sampleCaseSeeds: Array<Omit<DemoCaseRecord, "assessment">> = [
     },
     activity: [
       "Case created",
+      "Case triage started",
       "Archive evidence attached",
-      "Billing records requested",
-      "Coordinator follow-up scheduled",
+      "Additional ownership proof requested",
+      "Manual review queued",
     ],
   },
 ];
@@ -189,7 +190,7 @@ export function buildCustomDemoCase(input: CaseInput, assessment: AssessmentResu
   return {
     id: "custom-recovery-case",
     title: "Custom recovery case",
-    subtitle: "Submitted through the interactive recovery readiness engine",
+    subtitle: "Submitted through the recovery readiness preview",
     input,
     assessment,
     activity: [
@@ -202,27 +203,15 @@ export function buildCustomDemoCase(input: CaseInput, assessment: AssessmentResu
 }
 
 export function getDashboardStatus(assessment: AssessmentResult) {
-  if (assessment.readinessScore >= 80) {
-    return "Ready for Review";
-  }
-
-  if (assessment.readinessScore >= 60) {
-    return "Awaiting Docs";
-  }
-
-  if (assessment.readinessScore >= 45) {
-    return "In Progress";
-  }
-
-  return "Needs Review";
+  return assessment.reviewStatus;
 }
 
 export function getTimelineSteps(assessment: AssessmentResult) {
   return [
     "Intake completed",
-    "Initial signals reviewed",
+    "Evidence signals reviewed",
     "Documentation gaps identified",
-    assessment.reviewStatus === "Ready for formal review" ? "Ready for reviewer routing" : assessment.reviewStatus,
+    assessment.reviewStatus === "Ready for Submission Review" ? "Ready for reviewer routing" : assessment.reviewStatus,
     "Ready for submission review",
   ];
 }

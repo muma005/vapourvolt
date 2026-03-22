@@ -5,8 +5,8 @@ const signalDocumentMap: Record<keyof EvidenceSignals, string> = {
   historicalBillingProof: "Historical billing statement",
   companyRegistrationDocuments: "Company registration certificate",
   priorAdminEmailEvidence: "Prior admin continuity evidence",
-  archivedWebsiteEvidence: "Archive or historical asset evidence",
-  supportCorrespondence: "Support correspondence reference",
+  archivedWebsiteEvidence: "Archived site evidence",
+  supportCorrespondence: "Prior support ticket reference",
 };
 
 export function deriveRequirements(
@@ -30,6 +30,10 @@ export function deriveRequirements(
 
   if (assetType === "SaaS Account" && !requiredDocuments.includes("Workspace or account continuity reference")) {
     requiredDocuments.push("Workspace or account continuity reference");
+  }
+
+  if (assetType === "Other" && !requiredDocuments.includes("Supporting ownership documentation")) {
+    requiredDocuments.push("Supporting ownership documentation");
   }
 
   if (requiredDocuments.length === 1) {

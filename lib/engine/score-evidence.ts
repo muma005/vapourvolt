@@ -21,25 +21,25 @@ const signalDefinitions: Array<{
   {
     key: "companyRegistrationDocuments",
     label: "Organization documentation",
-    weight: 18,
+    weight: 20,
     detail: "Confirms the claimant organization as a lawful requesting party.",
   },
   {
     key: "priorAdminEmailEvidence",
     label: "Admin continuity",
-    weight: 16,
+    weight: 15,
     detail: "Links prior administrative control to the claimant or authorized team.",
   },
   {
     key: "archivedWebsiteEvidence",
     label: "Archive or history evidence",
-    weight: 14,
+    weight: 10,
     detail: "Provides historical public signals connecting the asset to the claimant.",
   },
   {
     key: "supportCorrespondence",
     label: "Support correspondence",
-    weight: 12,
+    weight: 15,
     detail: "Shows an auditable recovery trail and prior support engagement.",
   },
 ];
@@ -53,7 +53,7 @@ function strengthFromItem(present: boolean, weight: number): EvidenceStrength {
     return "Strong";
   }
 
-  if (weight >= 16) {
+  if (weight >= 15) {
     return "Moderate";
   }
 
@@ -61,11 +61,11 @@ function strengthFromItem(present: boolean, weight: number): EvidenceStrength {
 }
 
 function readinessLevelFromScore(score: number): EvidenceScore["readinessLevel"] {
-  if (score >= 80) {
+  if (score >= 65) {
     return "High";
   }
 
-  if (score >= 55) {
+  if (score >= 35) {
     return "Moderate";
   }
 

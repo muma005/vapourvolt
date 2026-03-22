@@ -22,10 +22,10 @@ test("evaluateCase handles a strong domain case", () => {
 
   const result = evaluateCase(input);
 
-  assert.equal(result.caseType, "Dormant asset recovery");
-  assert.equal(result.readinessScore, 84);
+  assert.equal(result.caseType, "Dormant domain recovery");
+  assert.equal(result.readinessScore, 85);
   assert.equal(result.readinessLevel, "High");
-  assert.equal(result.reviewStatus, "Ready for formal review");
+  assert.equal(result.reviewStatus, "Ready for Submission Review");
   assert.equal(result.recommendedPath, "Registrar-assisted ownership recovery");
 });
 
@@ -47,14 +47,15 @@ test("evaluateCase handles a partial social handle case", () => {
 
   const result = evaluateCase(input);
 
-  assert.equal(result.caseType, "Brand identity recovery");
-  assert.equal(result.readinessScore, 52);
-  assert.equal(result.readinessLevel, "Low");
-  assert.equal(result.reviewStatus, "Needs evidence review");
+  assert.equal(result.caseType, "Branded handle recovery");
+  assert.equal(result.readinessScore, 50);
+  assert.equal(result.readinessLevel, "Moderate");
+  assert.equal(result.reviewStatus, "Manual Review Required");
+  assert.equal(result.recommendedPath, "Manual platform escalation");
   assert.ok(result.requiredDocuments.includes("Historical billing statement"));
 });
 
-test("evaluateCase handles a weak SaaS case", () => {
+test("evaluateCase handles a weak SaaS case requiring manual review", () => {
   const input: CaseInput = {
     assetType: "SaaS Account",
     assetName: "workspace-legacy",
@@ -72,10 +73,36 @@ test("evaluateCase handles a weak SaaS case", () => {
 
   const result = evaluateCase(input);
 
-  assert.equal(result.caseType, "Administrative continuity restoration");
+  assert.equal(result.caseType, "Administrative account recovery");
+  assert.equal(result.readinessScore, 20);
   assert.equal(result.readinessLevel, "Low");
-  assert.equal(result.reviewStatus, "Needs evidence review");
+  assert.equal(result.reviewStatus, "Manual Review Required");
   assert.ok(result.nextActions.some((action) => action.includes("documentation")));
+});
+
+test("evaluateCase handles an other asset classification case", () => {
+  const input: CaseInput = {
+    assetType: "Other",
+    assetName: "legacy-property-packet",
+    organization: "OldBrand Group",
+    reasonForRecovery: "Documentation review for a legacy digital property",
+    evidenceSignals: {
+      trademarkRecord: false,
+      historicalBillingProof: true,
+      companyRegistrationDocuments: true,
+      priorAdminEmailEvidence: false,
+      archivedWebsiteEvidence: true,
+      supportCorrespondence: false,
+    },
+  };
+
+  const result = evaluateCase(input);
+
+  assert.equal(result.caseType, "General documentation review case");
+  assert.equal(result.readinessScore, 50);
+  assert.equal(result.readinessLevel, "Moderate");
+  assert.equal(result.reviewStatus, "Manual Review Required");
+  assert.equal(result.recommendedPath, "Documentation review and manual triage");
 });
 
 test("assess-case API returns structured assessment output", async () => {
@@ -106,7 +133,7 @@ test("assess-case API returns structured assessment output", async () => {
 
   const payload = (await response.json()) as { assessment: ReturnType<typeof evaluateCase> };
 
-  assert.equal(payload.assessment.caseType, "Portfolio recovery");
+  assert.equal(payload.assessment.caseType, "Dormant domain recovery");
   assert.ok(Array.isArray(payload.assessment.evidenceBreakdown));
   assert.ok(Array.isArray(payload.assessment.riskFlags));
 });

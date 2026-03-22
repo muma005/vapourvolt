@@ -12,7 +12,7 @@ export default function ContactPage() {
             <SectionHeader
               label="Early access"
               title="Request access to VaporVault."
-              description="Share your team details and use case. This v1 page is local-only, but it is structured like the real early-access intake we would ship next."
+              description="Share your team details and use case. This page is still local-only in v1, but it is framed like the product access intake we would ship next."
             />
 
             <form className="mt-10 space-y-5">
@@ -48,17 +48,17 @@ export default function ContactPage() {
           <div className="space-y-6">
             <Card className="p-6">
               <p className="text-xs uppercase tracking-[0.16em] text-muted">Contact</p>
-              <h2 className="mt-3 text-2xl font-semibold text-ink">Built for serious workflow teams.</h2>
+              <h2 className="mt-3 text-2xl font-semibold text-ink">Built for serious operations teams.</h2>
               <p className="mt-4 text-sm leading-7 text-muted">
                 VaporVault is positioned for operations, legal, brand protection, and internal portfolio teams
-                handling recovery-sensitive digital assets.
+                managing digital asset recovery cases as an operational system.
               </p>
               <div className="mt-6 grid gap-3">
                 {[
-                  "Evidence-led review",
-                  "Human-validated decisions",
-                  "Audit-friendly records",
-                  "Compliance-sensitive workflow framing",
+                  "Evidence-led case records",
+                  "Deterministic readiness scoring",
+                  "Audit-friendly saved assessments",
+                  "Compliance-aware decisioning",
                 ].map((item) => (
                   <div
                     key={item}
@@ -74,14 +74,14 @@ export default function ContactPage() {
               <p className="text-sm font-semibold text-ink">Privacy</p>
               <p className="mt-3 text-sm leading-7 text-muted">
                 Early-access details on this page are not persisted. In a production version, contact intake would
-                store only the information required to evaluate a workflow request and route lawful follow-up.
+                store only the information required to evaluate a product access request.
               </p>
             </Card>
 
             <Card className="p-6" id="terms">
               <p className="text-sm font-semibold text-ink">Terms</p>
               <p className="mt-3 text-sm leading-7 text-muted">
-                VaporVault is a workflow and documentation product. It does not support unauthorized access,
+                VaporVault is a case management and readiness platform. It does not support unauthorized access,
                 bypass, or account takeover methods.
               </p>
             </Card>

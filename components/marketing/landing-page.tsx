@@ -1,100 +1,99 @@
-import Link from "next/link";
 import { AccordionItem } from "@/components/ui/accordion-item";
 import { StatusBadge } from "@/components/ui/status-badge";
 import { Card, IconTextCard, PrimaryButton, SectionHeader, SecondaryButton } from "@/components/ui/primitives";
 
 const problemCards = [
   {
-    title: "Scattered evidence",
-    body: "Ownership signals, billing history, screenshots, and legal documents end up fragmented across tools.",
+    title: "Fragmented case records",
+    body: "Recovery work often lives across inboxes, screenshots, support threads, and spreadsheets instead of one durable system.",
     icon: <LineIcon path="M5 6.5h14M5 12h9M5 17.5h14" />,
   },
   {
-    title: "Unclear recovery readiness",
-    body: "Teams know a case matters, but not whether the documentation is strong enough to proceed.",
+    title: "Unclear readiness state",
+    body: "Teams can collect signals, but still lack a clear decision on whether a case is ready for review or still needs evidence.",
     icon: <LineIcon path="M12 5v7l4 3M12 19a7 7 0 1 0 0-14 7 7 0 0 0 0 14Z" />,
   },
   {
-    title: "No structured workflow",
-    body: "Without a clear case system, recovery efforts stall between review, follow-up, and submission.",
+    title: "No operational spine",
+    body: "Without a dedicated case platform, evidence tracking, next actions, and status progression break down quickly.",
     icon: <LineIcon path="M6 7h12M6 12h7M6 17h10" />,
   },
 ];
 
-const solutionCards = [
+const capabilityCards = [
   {
     title: "Case intake",
-    body: "Capture asset details, claimant information, and available ownership signals in one place.",
+    body: "Capture asset details, claimant information, and structured evidence signals in one product flow.",
     icon: <LineIcon path="M7 6h10l2 3v9H5V9l2-3Z" />,
   },
   {
-    title: "Evidence review",
-    body: "Organize supporting materials and identify proof gaps before the case moves forward.",
+    title: "Evidence tracking",
+    body: "Keep ownership proof, continuity signals, and document gaps visible inside a single case record.",
     icon: <LineIcon path="M7 17 10.5 13.5 13 16l4-5" />,
   },
   {
-    title: "Recovery readiness",
-    body: "Generate a clear recommendation path based on case type, evidence strength, and review requirements.",
+    title: "Readiness scoring",
+    body: "Run deterministic scoring that classifies the case, assigns readiness, and returns a structured review state.",
     icon: <LineIcon path="M6 15 10 11l3 3 5-6" />,
   },
   {
-    title: "Case tracking",
-    body: "Track progress, required actions, and status changes from intake to submission readiness.",
+    title: "Case progression",
+    body: "Move cases from intake to review with status badges, required documents, and next-step guidance.",
     icon: <LineIcon path="M7 7h10v10H7zM10 10h4v4h-4z" />,
   },
 ];
 
 const steps = [
-  ["Submit a case", "Enter the asset, claimant, and reason for recovery."],
-  ["Review signals", "Assess ownership indicators, evidence strength, and missing documentation."],
-  ["Generate a recovery plan", "See the recommended path, proof requirements, and human review status."],
-  ["Track the case", "Manage progress, pending tasks, and case history in one dashboard."],
+  ["Create the case record", "Start with asset details, claimant organization, recovery reason, and the available evidence set."],
+  ["Score readiness", "The engine classifies the case, scores the evidence profile, and determines review status."],
+  ["Close proof gaps", "Required documents, risk flags, and next actions stay attached to the case record."],
+  ["Progress the case", "Reopen saved cases later from the dashboard and keep the operation inside one workspace."],
 ];
 
 const trustCards = [
   {
-    title: "No unauthorized access",
-    body: "The workflow does not support intrusion, bypass, or account takeover methods.",
+    title: "Bounded decisioning",
+    body: "The platform generates structured recommendations and review states. It does not perform recovery actions.",
   },
   {
-    title: "Evidence-based handling",
-    body: "Cases move forward through documentation, ownership signals, and reviewable records.",
+    title: "Evidence-led records",
+    body: "Every case is anchored in claimant proof, continuity signals, document requirements, and explicit next actions.",
   },
   {
-    title: "Human-reviewed decisions",
-    body: "Recommendations are surfaced clearly, with manual validation where required.",
+    title: "Manual review visibility",
+    body: "High-sensitivity cases surface manual review requirements directly in the assessment output.",
   },
   {
-    title: "Audit-friendly records",
-    body: "Case history, status progression, and document requirements stay visible and structured.",
+    title: "Audit-friendly history",
+    body: "Saved cases keep their input, readiness output, and progression state together as a single system of record.",
   },
 ];
 
 const faqs = [
   {
-    question: "What kinds of assets can VaporVault support?",
+    question: "What is VaporVault?",
     answer:
-      "VaporVault is designed for structured recovery workflows around digital assets such as domains, branded handles, legacy SaaS accounts, and other digital properties where lawful recovery requires documentation and process control.",
+      "VaporVault is a vertical SaaS platform for digital asset recovery operations. It centralizes case intake, evidence tracking, readiness scoring, and case progression in one structured system.",
   },
   {
-    question: "Does VaporVault perform recovery automatically?",
+    question: "Who is it built for?",
     answer:
-      "No. VaporVault helps teams organize cases, assess readiness, and manage the workflow required for lawful recovery. It is a workflow and documentation product, not an automated takeover tool.",
+      "The product is designed for operations, legal, brand protection, portfolio, and internal platform teams that manage recovery-sensitive digital asset cases.",
   },
   {
-    question: "Who is this built for?",
+    question: "Does VaporVault recover assets automatically?",
     answer:
-      "The product is best suited for operations, legal, brand protection, portfolio management, and internal teams handling recovery-sensitive digital assets.",
+      "No. The platform provides structured case management, deterministic readiness scoring, and bounded recommendations. It does not perform unauthorized access, takeover, or automated recovery actions.",
   },
   {
-    question: "How does VaporVault handle compliance?",
+    question: "What does the MVP store?",
     answer:
-      "The product is framed around documented workflows, bounded recommendations, visible risk checks, and human review where required.",
+      "The product stores authenticated user accounts, saved case records, and the structured assessment generated for each case so teams can revisit them later.",
   },
   {
-    question: "Can this integrate with external systems later?",
+    question: "Can the public demo save data?",
     answer:
-      "Yes. Future versions can support registrar workflows, internal case systems, and document pipelines, but the first version focuses on core workflow clarity.",
+      "No. The public demo previews the engine and report experience. Persistent case records live inside the authenticated product workspace.",
   },
 ];
 
@@ -109,54 +108,84 @@ function LineIcon({ path }: { path: string }) {
 function HeroPreview() {
   return (
     <Card className="overflow-hidden p-5 sm:p-6">
-      <div className="flex items-center justify-between border-b border-[var(--color-border)] pb-4">
-        <div>
-          <p className="text-sm font-semibold text-ink">Active Cases</p>
-          <p className="mt-1 text-xs text-muted">Operations workspace</p>
-        </div>
-        <StatusBadge value="Awaiting Review" />
-      </div>
-
-      <div className="mt-5 grid gap-4 lg:grid-cols-[0.85fr_1.25fr]">
-        <div className="surface-muted p-4">
-          <div className="space-y-3">
-            {["vaporvaultlabs.com", "@vaporvaulthq", "Workspace-19"].map((caseName, index) => (
-              <div
-                key={caseName}
-                className={`rounded-2xl border px-4 py-3 ${index === 0 ? "border-[rgba(54,85,211,0.22)] bg-white" : "border-transparent bg-white/55"}`}
-              >
-                <p className="text-sm font-medium text-ink">{caseName}</p>
-                <p className="mt-1 text-xs text-muted">{index === 0 ? "Ready for Submission" : "Ownership Signals"}</p>
+      <div className="grid gap-4 lg:grid-cols-[0.88fr_1.12fr]">
+        <div className="space-y-4">
+          <div className="surface-muted p-4">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="text-sm font-semibold text-ink">Case Queue</p>
+                <p className="mt-1 text-xs text-muted">Recovery operations workspace</p>
               </div>
-            ))}
+              <StatusBadge value="Ready for Review" />
+            </div>
+            <div className="mt-4 space-y-3">
+              {[
+                ["vaporvaultlabs.com", "Ready for Submission Review"],
+                ["@vaporvaulthq", "Manual Review Required"],
+                ["Workspace-19", "Needs Evidence"],
+              ].map(([label, status], index) => (
+                <div
+                  key={label}
+                  className={`rounded-2xl border px-4 py-3 ${index === 0 ? "border-[rgba(54,85,211,0.22)] bg-white" : "border-transparent bg-white/70"}`}
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <p className="text-sm font-medium text-ink">{label}</p>
+                    <span className="text-[11px] uppercase tracking-[0.12em] text-muted">#{index + 1}</span>
+                  </div>
+                  <p className="mt-2 text-xs text-muted">{status}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="surface-muted p-4">
+              <p className="text-xs uppercase tracking-[0.16em] text-muted">Readiness Score</p>
+              <p className="mt-3 text-3xl font-semibold text-ink">85%</p>
+              <p className="mt-2 text-xs text-muted">High readiness case with only a small proof gap remaining.</p>
+            </div>
+            <div className="surface-muted p-4">
+              <p className="text-xs uppercase tracking-[0.16em] text-muted">Evidence Completeness</p>
+              <p className="mt-3 text-3xl font-semibold text-ink">5 / 6</p>
+              <p className="mt-2 text-xs text-muted">Most claimant and continuity signals are already present.</p>
+            </div>
           </div>
         </div>
 
         <div className="space-y-4">
           <div className="surface-muted p-4">
             <div className="flex flex-wrap gap-2">
-              <StatusBadge value="Recovery Path" />
-              <StatusBadge value="Required Documents" />
+              <StatusBadge value="Ready for Submission Review" />
+              <StatusBadge value="Low" />
             </div>
-            <p className="mt-4 text-sm leading-6 text-muted">
-              Selected case panel with ownership review, checklist progression, and next-step guidance.
-            </p>
+            <p className="mt-4 text-sm font-semibold text-ink">Next-step panel</p>
+            <div className="mt-3 grid gap-3">
+              {[
+                "Attach claimant authorization letter",
+                "Route the case to submission review",
+                "Keep reviewer notes inside the case record",
+              ].map((item) => (
+                <div key={item} className="rounded-2xl border border-[rgba(22,28,40,0.08)] bg-white/75 px-4 py-3 text-sm text-ink">
+                  {item}
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div className="surface-muted p-4">
-              <p className="text-sm font-semibold text-ink">Checklist</p>
-              <ul className="mt-3 space-y-2 text-sm text-muted">
-                <li>Claimant authorization</li>
-                <li>Archive evidence</li>
-                <li>Billing continuity</li>
-              </ul>
-            </div>
-            <div className="surface-muted p-4">
-              <p className="text-sm font-semibold text-ink">Recommendation</p>
-              <p className="mt-3 text-sm leading-6 text-muted">
-                Registrar-assisted ownership recovery with formal review before submission.
-              </p>
+          <div className="surface-muted p-4">
+            <p className="text-sm font-semibold text-ink">Recent activity</p>
+            <div className="mt-4 space-y-3 text-sm text-muted">
+              {[
+                "Case created and normalized",
+                "Evidence score recalculated",
+                "Documentation gap flagged",
+                "Review status updated",
+              ].map((item) => (
+                <div key={item} className="flex gap-3">
+                  <span className="mt-2 inline-flex h-2.5 w-2.5 rounded-full bg-[var(--color-primary)]" />
+                  <span>{item}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -168,25 +197,25 @@ function HeroPreview() {
 export function HeroSplit() {
   return (
     <section className="section-pad pt-16" id="product">
-      <div className="site-shell grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+      <div className="site-shell grid items-center gap-12 lg:grid-cols-[1.02fr_0.98fr]">
         <div>
-          <span className="eyebrow">Lawful digital asset recovery workflow</span>
+          <span className="eyebrow">Digital asset recovery operations platform</span>
           <h1 className="mt-6 max-w-3xl text-5xl font-semibold tracking-[-0.06em] text-ink sm:text-6xl">
-            Bring structure, evidence, and visibility to digital asset recovery.
+            The case management and recovery readiness platform for digital asset operations.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">
-            VaporVault helps teams assess cases, collect supporting evidence, and manage lawful recovery
-            workflows for domains, accounts, and digital properties.
+            VaporVault centralizes case intake, evidence tracking, readiness scoring, and case progression in one
+            structured system.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <PrimaryButton href="/demo">Try Demo</PrimaryButton>
-            <SecondaryButton href="/#workflow">See Workflow</SecondaryButton>
+            <PrimaryButton href="/signup">Get Started</PrimaryButton>
+            <SecondaryButton href="/demo">View Product</SecondaryButton>
           </div>
 
           <div className="mt-8 flex flex-wrap items-center gap-3 text-sm text-muted">
             <span className="inline-flex h-2.5 w-2.5 rounded-full bg-[var(--color-success)]" />
-            Evidence-led. Audit-friendly. Built for lawful recovery operations.
+            Structured workflows. Clear decisioning. Audit-friendly case records.
           </div>
         </div>
 
@@ -202,8 +231,8 @@ export function ProblemCardGrid() {
       <div className="site-shell">
         <SectionHeader
           label="The problem"
-          title="Recovery work breaks down when evidence, ownership signals, and next steps live in scattered systems."
-          description="Teams often handle recovery cases across inboxes, screenshots, legal notes, support tickets, and spreadsheets. That slows decisions, weakens documentation, and increases operational risk."
+          title="Digital asset recovery operations break down when case records, evidence, and decisions live in disconnected tools."
+          description="Teams need a repeatable operating model for intake, evidence review, readiness scoring, and case progression. Without one, the workflow becomes slower, riskier, and harder to audit."
         />
 
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
@@ -221,13 +250,13 @@ export function SolutionCardGrid() {
     <section className="section-pad border-y border-[rgba(22,28,40,0.06)] bg-[rgba(255,253,248,0.6)]">
       <div className="site-shell">
         <SectionHeader
-          label="The solution"
-          title="VaporVault turns recovery cases into a clear operational workflow."
-          description="Instead of managing recovery through disconnected documents and manual follow-up, teams can run each case through a structured, reviewable process."
+          label="Product capabilities"
+          title="VaporVault provides the software layer for running recovery cases as a structured operation."
+          description="Instead of stitching together tickets, screenshots, and notes, teams get a dedicated workspace for case intake, evidence tracking, readiness scoring, and progression management."
         />
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {solutionCards.map((card) => (
+          {capabilityCards.map((card) => (
             <IconTextCard key={card.title} title={card.title} body={card.body} icon={card.icon} />
           ))}
         </div>
@@ -240,7 +269,7 @@ export function StepsRow() {
   return (
     <section className="section-pad" id="workflow">
       <div className="site-shell">
-        <SectionHeader label="How it works" title="A simple workflow for complex recovery cases." />
+        <SectionHeader label="How it works" title="A narrow product loop built for repeatable recovery operations." />
         <div className="mt-10 grid gap-6 lg:grid-cols-4">
           {steps.map(([title, body], index) => (
             <Card key={title} className="relative h-full p-6">
@@ -260,50 +289,51 @@ export function StepsRow() {
 export function ProductPreviewPanel() {
   return (
     <section className="section-pad border-y border-[rgba(22,28,40,0.06)] bg-[rgba(255,253,248,0.55)]">
-      <div className="site-shell grid items-center gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+      <div className="site-shell grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
           <SectionHeader
             label="Product preview"
-            title="A workspace built for recovery operations."
-            description="See case status, ownership signals, document requirements, and review notes in a structured interface designed for compliance-sensitive workflows."
+            title="A system of record for case intake, readiness scoring, and progression."
+            description="The public preview shows the assessment flow. Inside the authenticated product, cases are saved to the workspace and can be reopened later from the dashboard."
           />
           <ul className="mt-8 space-y-4 text-sm text-muted">
             {[
-              "Recovery readiness report",
-              "Ownership signal scoring",
-              "Required document checklist",
-              "Status tracking and activity history",
+              "Saved case records with review status and readiness score",
+              "Evidence breakdown tied directly to the case",
+              "Required documents and next actions in the same report",
+              "Dashboard views for recent cases and progression state",
             ].map((item) => (
               <li key={item} className="flex items-center gap-3">
                 <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[var(--color-primary-soft)] text-[var(--color-primary)]">
-                  ✓
+                  +
                 </span>
                 {item}
               </li>
             ))}
           </ul>
 
-          <div className="mt-8">
-            <PrimaryButton href="/demo">Explore the demo</PrimaryButton>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <PrimaryButton href="/signup">Get Started</PrimaryButton>
+            <SecondaryButton href="/demo">View Product</SecondaryButton>
           </div>
         </div>
 
         <Card className="p-6">
-          <div className="grid gap-4 lg:grid-cols-[1fr_0.85fr]">
+          <div className="grid gap-4 lg:grid-cols-[1fr_0.88fr]">
             <div className="surface-muted p-5">
-              <div className="flex items-start justify-between">
+              <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-sm font-semibold text-ink">Recovery Readiness Report</p>
-                  <p className="mt-1 text-xs text-muted">Case classification, documentation review, and recommended path.</p>
+                  <p className="mt-1 text-xs text-muted">Case type, evidence score, review state, and next actions.</p>
                 </div>
-                <StatusBadge value="72%" />
+                <StatusBadge value="85%" />
               </div>
 
               <div className="mt-6 space-y-4">
                 {[
-                  ["Asset Type", "Domain"],
-                  ["Case Category", "Dormant asset recovery"],
-                  ["Review Status", "Human review required"],
+                  ["Case Type", "Dormant domain recovery"],
+                  ["Review Status", "Ready for Submission Review"],
+                  ["Recommended Path", "Registrar-assisted ownership recovery"],
                 ].map(([label, value]) => (
                   <div key={label} className="rounded-2xl bg-white/85 p-4">
                     <p className="text-xs uppercase tracking-[0.16em] text-muted">{label}</p>
@@ -315,19 +345,19 @@ export function ProductPreviewPanel() {
 
             <div className="space-y-4">
               <div className="surface-muted p-5">
-                <p className="text-sm font-semibold text-ink">Required Documents</p>
+                <p className="text-sm font-semibold text-ink">Required documents</p>
                 <ul className="mt-4 space-y-3 text-sm text-muted">
-                  <li>Company registration certificate</li>
-                  <li>Historical billing statement</li>
                   <li>Claimant authorization letter</li>
+                  <li>Company registration certificate</li>
+                  <li>Archived site evidence</li>
                 </ul>
               </div>
               <div className="surface-muted p-5">
-                <p className="text-sm font-semibold text-ink">Risk and compliance</p>
+                <p className="text-sm font-semibold text-ink">Review signals</p>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  <StatusBadge value="Blocked" />
                   <StatusBadge value="Low" />
                   <StatusBadge value="Medium" />
+                  <StatusBadge value="Ready for Review" />
                 </div>
               </div>
             </div>
@@ -345,8 +375,8 @@ export function TrustGrid() {
         <div className="rounded-[2rem] border border-[rgba(22,28,40,0.08)] bg-[rgba(240,237,229,0.7)] p-8 sm:p-10">
           <SectionHeader
             label="Trust and compliance"
-            title="Designed for lawful, documented recovery workflows."
-            description="VaporVault is framed around structured review, evidence handling, and clearly bounded recovery processes."
+            title="Built for documented, reviewable, compliance-aware operations."
+            description="VaporVault is intentionally scoped around intake, evidence tracking, deterministic scoring, and reviewer-facing output. The platform does not perform recovery actions."
           />
 
           <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -354,7 +384,11 @@ export function TrustGrid() {
               <Card key={card.title} className="h-full bg-white/85 p-6">
                 <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-[var(--color-border)] bg-[rgba(54,85,211,0.08)]">
                   <svg viewBox="0 0 24 24" className="h-5 w-5 stroke-[var(--color-primary)]" fill="none" strokeWidth="1.7">
-                    <path d="M12 3 6.5 5v6.5c0 3.6 2.2 6.8 5.5 8.5 3.3-1.7 5.5-4.9 5.5-8.5V5L12 3Z" strokeLinecap="round" strokeLinejoin="round" />
+                    <path
+                      d="M12 3 6.5 5v6.5c0 3.6 2.2 6.8 5.5 8.5 3.3-1.7 5.5-4.9 5.5-8.5V5L12 3Z"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
                     <path d="m9.5 12 1.7 1.7 3.4-3.7" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
@@ -373,19 +407,20 @@ export function CTASection() {
   return (
     <section className="section-pad pt-0">
       <div className="site-shell">
-        <Card className="overflow-hidden border-[rgba(54,85,211,0.14)] bg-[linear-gradient(135deg,rgba(54,85,211,0.10),rgba(255,255,255,0.9))] p-8 sm:p-10">
+        <Card className="overflow-hidden border-[rgba(54,85,211,0.14)] bg-[linear-gradient(135deg,rgba(54,85,211,0.10),rgba(255,255,255,0.92))] p-8 sm:p-10">
           <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
               <p className="text-3xl font-semibold tracking-[-0.04em] text-ink">
-                See how structured digital asset recovery should work.
+                Centralize digital asset recovery cases in one platform.
               </p>
               <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-                Explore the interactive demo and walk through a sample recovery case from intake to readiness report.
+                Sign in to the product workspace, create a case, run the Recovery Readiness Engine, and save the result
+                for later review.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <PrimaryButton href="/demo">Try Demo</PrimaryButton>
-              <SecondaryButton href="/contact">Request Access</SecondaryButton>
+              <PrimaryButton href="/signup">Get Started</PrimaryButton>
+              <SecondaryButton href="/login">Log In</SecondaryButton>
             </div>
           </div>
         </Card>
@@ -408,8 +443,8 @@ export function LandingPage() {
         <div className="site-shell">
           <SectionHeader
             label="FAQ"
-            title="Answers for teams evaluating the workflow."
-            description="The first release focuses on workflow clarity, evidence handling, and compliance-friendly case management."
+            title="Answers for teams evaluating the platform."
+            description="The MVP focuses on the real product loop: auth, protected routes, case creation, deterministic assessment, saved cases, and dashboard revisit."
           />
 
           <div className="mt-10 grid gap-4">

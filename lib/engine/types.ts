@@ -1,4 +1,4 @@
-export type AssetType = "Domain" | "Social Handle" | "SaaS Account";
+export type AssetType = "Domain" | "Social Handle" | "SaaS Account" | "Other";
 
 export type EvidenceSignals = {
   trademarkRecord: boolean;
@@ -41,7 +41,11 @@ export type AssessmentResult = {
   caseType: string;
   readinessScore: number;
   readinessLevel: "Low" | "Moderate" | "High";
-  reviewStatus: string;
+  reviewStatus:
+    | "Needs Evidence"
+    | "Ready for Review"
+    | "Ready for Submission Review"
+    | "Manual Review Required";
   recommendedPath: string;
   riskFlags: RiskFlag[];
   requiredDocuments: string[];
@@ -52,7 +56,7 @@ export type AssessmentResult = {
 
 export type ClassifiedCase = {
   caseType: string;
-  recommendedPath: string;
+  defaultPath: string;
   assetSpecificRequirement: string;
 };
 

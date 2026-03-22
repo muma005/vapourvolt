@@ -1,9 +1,16 @@
+"use client";
+
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { Card, PrimaryButton, SecondaryButton } from "@/components/ui/primitives";
+import { hasSupabaseEnv } from "@/lib/auth/env";
+import { createSupabaseBrowserClient } from "@/lib/auth/supabase-browser";
 
 type AuthShellProps = {
+  mode: "login" | "signup";
   label: string;
   title: string;
   description: string;
@@ -20,6 +27,7 @@ type AuthShellProps = {
 };
 
 export function AuthShell({
+  mode,
   label,
   title,
   description,
@@ -29,6 +37,90 @@ export function AuthShell({
   altLinkText,
   fields,
 }: AuthShellProps) {
+  const router = useRouter();
+  const [values, setValues] = useState<Record<string, string>>(
+    () => Object.fromEntries(fields.map((field) => [field.name, ""])) as Record<string, string>,
+  );
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const helperCopy =
+    mode === "signup"
+      ? "Create an email/password account to enter the VaporVault product workspace and save recovery cases."
+      : "Sign in to access your saved cases, readiness assessments, and case progression workspace.";
+
+  function updateValue(name: string, value: string) {
+    setValues((current) => ({
+      ...current,
+      [name]: value,
+    }));
+  }
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setError(null);
+    setSuccess(null);
+    setIsSubmitting(true);
+
+    try {
+      if (!hasSupabaseEnv()) {
+        throw new Error("Supabase is not configured yet. Add the project keys to enable product access.");
+      }
+
+      const supabase = createSupabaseBrowserClient();
+      const email = (values.email ?? "").trim();
+      const password = values.password ?? "";
+
+      if (mode === "signup") {
+        const signUpResult = await supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            data: {
+              full_name: values.name ?? "",
+              company: values.company ?? "",
+            },
+          },
+        });
+
+        if (signUpResult.error) {
+          throw signUpResult.error;
+        }
+
+        if (!signUpResult.data.session) {
+          const signInResult = await supabase.auth.signInWithPassword({
+            email,
+            password,
+          });
+
+          if (signInResult.error) {
+            throw signInResult.error;
+          }
+        }
+
+        setSuccess("Workspace created. Redirecting to the product...");
+      } else {
+        const signInResult = await supabase.auth.signInWithPassword({
+          email,
+          password,
+        });
+
+        if (signInResult.error) {
+          throw signInResult.error;
+        }
+
+        setSuccess("Signed in. Redirecting to the product...");
+      }
+
+      router.push("/app");
+      router.refresh();
+    } catch (caughtError) {
+      setError(caughtError instanceof Error ? caughtError.message : "Unable to complete authentication.");
+      setIsSubmitting(false);
+      return;
+    }
+  }
+
   return (
     <>
       <Navbar />
@@ -41,10 +133,10 @@ export function AuthShell({
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               {[
-                "Secure case access",
-                "Team-ready workflows",
-                "Audit-friendly reporting",
-                "Human-reviewed recovery paths",
+                "Protected product access",
+                "Saved case records",
+                "Structured decisioning",
+                "Audit-friendly assessments",
               ].map((item) => (
                 <div
                   key={item}
@@ -60,12 +152,10 @@ export function AuthShell({
             <div className="max-w-xl">
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-muted">{label}</p>
               <h2 className="mt-3 text-2xl font-semibold text-ink">{submitLabel}</h2>
-              <p className="mt-3 text-sm leading-7 text-muted">
-                This v1 page is UI-only for now, but it is designed to feel like the real access flow.
-              </p>
+              <p className="mt-3 text-sm leading-7 text-muted">{helperCopy}</p>
             </div>
 
-            <form className="mt-8 space-y-5">
+            <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
               {fields.map((field) => (
                 <label key={field.name} className="block">
                   <span className="field-label">{field.label}</span>
@@ -74,22 +164,35 @@ export function AuthShell({
                     name={field.name}
                     type={field.type ?? "text"}
                     placeholder={field.placeholder}
+                    value={values[field.name] ?? ""}
+                    onChange={(event) => updateValue(field.name, event.target.value)}
                   />
                 </label>
               ))}
 
+              {error ? (
+                <div className="rounded-2xl border border-[rgba(142,75,75,0.18)] bg-[rgba(142,75,75,0.08)] px-4 py-3 text-sm text-[var(--color-danger)]">
+                  {error}
+                </div>
+              ) : null}
+
+              {success ? (
+                <div className="rounded-2xl border border-[rgba(63,120,86,0.18)] bg-[rgba(63,120,86,0.1)] px-4 py-3 text-sm text-[var(--color-success)]">
+                  {success}
+                </div>
+              ) : null}
+
               <div className="flex items-center justify-between rounded-2xl border border-[rgba(22,28,40,0.08)] bg-[rgba(240,237,229,0.72)] px-4 py-3">
-                <label className="flex items-center gap-3 text-sm text-ink">
-                  <input type="checkbox" className="h-4 w-4 rounded border-[var(--color-border)]" />
-                  Keep me signed in
-                </label>
+                <p className="text-sm text-ink">Email/password authentication with protected product routes.</p>
                 <Link href="/contact" className="text-sm font-medium text-[var(--color-primary)]">
-                  Need access?
+                  Need help?
                 </Link>
               </div>
 
               <div className="flex flex-wrap gap-3 pt-2">
-                <PrimaryButton type="button">{submitLabel}</PrimaryButton>
+                <PrimaryButton type="submit" disabled={isSubmitting}>
+                  {isSubmitting ? "Please wait" : submitLabel}
+                </PrimaryButton>
                 <SecondaryButton href="/demo">Preview Demo</SecondaryButton>
               </div>
             </form>

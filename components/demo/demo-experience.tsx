@@ -25,7 +25,7 @@ const processingSteps = [
   "Validating case inputs",
   "Reviewing ownership signals",
   "Checking documentation completeness",
-  "Building recovery recommendation",
+  "Generating structured recommendation",
 ];
 
 const dashboardNav = ["Overview", "Cases", "Reviews", "Documents", "Activity"];
@@ -33,11 +33,11 @@ const dashboardNav = ["Overview", "Cases", "Reviews", "Documents", "Activity"];
 function activeTimelineIndex(reviewStatus: string) {
   const value = reviewStatus.toLowerCase();
 
-  if (value.includes("ready")) {
+  if (value.includes("submission")) {
     return 4;
   }
 
-  if (value.includes("awaiting")) {
+  if (value.includes("manual") || value.includes("review")) {
     return 3;
   }
 
@@ -160,13 +160,13 @@ export function DemoExperience() {
         <div className="mb-6 flex flex-wrap items-center justify-between gap-4 rounded-[1.75rem] border border-[rgba(22,28,40,0.08)] bg-[rgba(255,253,248,0.76)] px-5 py-4 backdrop-blur-xl">
           <div>
             <p className="text-sm font-semibold text-ink">VaporVault demo</p>
-            <p className="mt-1 text-sm text-muted">Recovery Readiness Engine preview</p>
+            <p className="mt-1 text-sm text-muted">Public preview of the Recovery Readiness Engine</p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
             <Link href="/" className="text-sm font-medium text-muted transition hover:text-ink">
               Back to product
             </Link>
-            <PrimaryButton href="/contact">Request Access</PrimaryButton>
+            <PrimaryButton href="/signup">Get Started</PrimaryButton>
           </div>
         </div>
 
@@ -174,13 +174,13 @@ export function DemoExperience() {
           <Card className="p-8 sm:p-10">
             <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
               <div>
-                <span className="eyebrow">Interactive recovery workflow demo</span>
+                <span className="eyebrow">Recovery readiness product preview</span>
                 <h1 className="mt-5 text-4xl font-semibold tracking-[-0.05em] text-ink sm:text-5xl">
-                  Interactive recovery workflow demo
+                  Preview how VaporVault scores case readiness.
                 </h1>
                 <p className="mt-5 max-w-2xl text-base leading-7 text-muted sm:text-lg">
-                  Load a sample case or enter your own details to see how VaporVault structures a lawful recovery
-                  workflow.
+                  Load a sample case or enter your own details to see how the platform classifies the case, scores
+                  evidence, and returns a structured recommendation.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 lg:justify-end">
@@ -216,7 +216,7 @@ export function DemoExperience() {
             <div className="max-w-2xl">
               <h1 className="text-3xl font-semibold tracking-[-0.04em] text-ink">Case intake</h1>
               <p className="mt-4 text-base leading-7 text-muted">
-                Enter the case details and available ownership signals to generate a structured readiness report.
+                Enter the case details and evidence signals to generate a structured readiness report.
               </p>
               {submissionError ? (
                 <div className="mt-5 rounded-2xl border border-[rgba(142,75,75,0.18)] bg-[rgba(142,75,75,0.08)] px-4 py-3 text-sm text-[var(--color-danger)]">
@@ -240,6 +240,7 @@ export function DemoExperience() {
                       <option value="Domain">Domain</option>
                       <option value="Social Handle">Social Handle</option>
                       <option value="SaaS Account">SaaS Account</option>
+                      <option value="Other">Other</option>
                     </select>
                   </label>
 
@@ -403,7 +404,7 @@ function ReportView({
           <div>
             <h1 className="text-3xl font-semibold tracking-[-0.04em] text-ink">Recovery Readiness Report</h1>
             <p className="mt-3 text-base leading-7 text-muted">
-              Case classification, documentation review, and recommended path.
+              Structured case classification, evidence review, and recommended path.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
