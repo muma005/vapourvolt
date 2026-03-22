@@ -4,6 +4,7 @@ import { PrimaryButton } from "@/components/ui/primitives";
 const navLinks = [
   { label: "Product", href: "/#product" },
   { label: "Workflow", href: "/#workflow" },
+  { label: "Engine", href: "/#engine" },
   { label: "Trust", href: "/#trust" },
   { label: "FAQ", href: "/#faq" },
   { label: "Demo", href: "/demo" },
