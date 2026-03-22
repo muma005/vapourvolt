@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { Card, PrimaryButton, SecondaryButton } from "@/components/ui/primitives";
+import { getBrowserSession, loginBrowserUser, signUpBrowserUser } from "@/lib/auth/browser-auth";
 
 type AuthShellProps = {
   mode: "login" | "signup";
@@ -47,6 +48,12 @@ export function AuthShell({
       ? "Create an email/password account to enter the VaporVault product workspace and save recovery cases."
       : "Sign in to access your saved cases, readiness assessments, and case progression workspace.";
 
+  useEffect(() => {
+    if (getBrowserSession()) {
+      router.replace("/app");
+    }
+  }, [router]);
+
   function updateValue(name: string, value: string) {
     setValues((current) => ({
       ...current,
@@ -61,18 +68,21 @@ export function AuthShell({
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(mode === "signup" ? "/api/auth/signup" : "/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
-      });
+      const result =
+        mode === "signup"
+          ? signUpBrowserUser({
+              name: values.name ?? "",
+              company: values.company ?? "",
+              email: values.email ?? "",
+              password: values.password ?? "",
+            })
+          : loginBrowserUser({
+              email: values.email ?? "",
+              password: values.password ?? "",
+            });
 
-      const payload = (await response.json()) as { error?: string };
-
-      if (!response.ok) {
-        throw new Error(payload.error ?? "Unable to complete authentication.");
+      if (!result.ok) {
+        throw new Error(result.error);
       }
 
       setSuccess(mode === "signup" ? "Workspace created. Redirecting to the product..." : "Signed in. Redirecting to the product...");

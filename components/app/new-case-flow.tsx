@@ -3,8 +3,11 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Card, PrimaryButton, SecondaryButton } from "@/components/ui/primitives";
-import { cn } from "@/lib/utils";
+import { cn, randomUUID } from "@/lib/utils";
 import { emptyEvidenceSignals, signalOptions } from "@/data/sampleCases";
+import { evaluateCase } from "@/lib/engine";
+import { getBrowserSession, saveBrowserCase } from "@/lib/auth/browser-auth";
+import type { SavedCase } from "@/lib/db/types";
 
 type AppCaseForm = {
   assetType: "Domain" | "Social Handle" | "SaaS Account" | "Other" | "";
@@ -37,6 +40,13 @@ export function NewCaseFlow() {
   const [stepIndex, setStepIndex] = useState(0);
   const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState<AppCaseForm>(emptyForm);
+
+  useEffect(() => {
+    if (!getBrowserSession()) {
+      router.replace("/login");
+      return;
+    }
+  }, [router]);
 
   useEffect(() => {
     if (view !== "processing") {
@@ -86,24 +96,27 @@ export function NewCaseFlow() {
     };
 
     try {
-      const [response] = await Promise.all([
-        fetch("/api/cases", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        }),
-        new Promise((resolve) => window.setTimeout(resolve, 1900)),
-      ]);
+      await new Promise((resolve) => window.setTimeout(resolve, 1900));
 
-      if (!response.ok) {
-        const payload = (await response.json()) as { error?: string };
-        throw new Error(payload.error ?? "Unable to create case.");
+      const session = getBrowserSession();
+
+      if (!session) {
+        throw new Error("Sign in to create a case.");
       }
 
-      const result = (await response.json()) as { caseId: string };
-      router.push(`/app/cases/${result.caseId}`);
+      const assessment = evaluateCase(payload);
+      const caseId = randomUUID();
+      const caseItem: SavedCase & { userId: string } = {
+        id: caseId,
+        userId: session.id,
+        status: assessment.reviewStatus,
+        createdAt: new Date().toISOString(),
+        input: payload,
+        assessment,
+      };
+
+      saveBrowserCase(caseItem);
+      router.push(`/app/cases/${caseId}`);
       router.refresh();
     } catch (caughtError) {
       setError(caughtError instanceof Error ? caughtError.message : "Unable to create case.");

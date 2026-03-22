@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { PrimaryButton } from "@/components/ui/primitives";
+import { clearBrowserSession, getBrowserSession } from "@/lib/auth/browser-auth";
 import { cn } from "@/lib/utils";
 
 const navItems = [
@@ -19,12 +20,13 @@ export function AppSidebar({
   const pathname = usePathname();
 
   async function handleSignOut() {
-    await fetch("/api/auth/logout", {
-      method: "POST",
-    });
+    clearBrowserSession();
     router.push("/");
     router.refresh();
   }
+
+  const session = getBrowserSession();
+  const displayedEmail = session?.email ?? email;
 
   return (
     <aside className="w-full rounded-[1.75rem] border border-[rgba(22,28,40,0.08)] bg-[rgba(255,253,248,0.88)] p-5 lg:w-[260px]">
@@ -52,7 +54,7 @@ export function AppSidebar({
 
       <div className="mt-8 rounded-2xl border border-[rgba(22,28,40,0.08)] bg-white/70 px-4 py-4">
         <p className="text-xs uppercase tracking-[0.16em] text-muted">Signed in</p>
-        <p className="mt-2 text-sm font-medium text-ink">{email}</p>
+        <p className="mt-2 text-sm font-medium text-ink">{displayedEmail}</p>
       </div>
 
       <div className="mt-4">
