@@ -31,9 +31,12 @@ export function Navbar() {
           ))}
         </nav>
 
-        <PrimaryButton href="/demo" className="hidden sm:inline-flex">
-          Try Demo
-        </PrimaryButton>
+        <div className="hidden items-center gap-3 sm:flex">
+          <Link href="/login" className="text-sm font-medium text-muted transition hover:text-ink">
+            Log In
+          </Link>
+          <PrimaryButton href="/signup">Sign Up</PrimaryButton>
+        </div>
       </div>
     </header>
   );
